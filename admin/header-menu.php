@@ -114,9 +114,9 @@
                             </li> -->
 
                              <li>
-                                <a class="side-menu__item has-link" href="staff-desa.php">
+                                <a class="side-menu__item has-link" href="pelanggan.php">
                                 <i class="side-menu__icon fe fe-users"></i>
-                                <span class="side-menu__label">Staff Desa</span></a>
+                                <span class="side-menu__label">Pelanggan</span></a>
                             </li>
 
                             <li class="slide">
