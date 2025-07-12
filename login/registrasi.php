@@ -3,11 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Sash – Bootstrap 5 Admin & Dashboard Template">
     <meta name="author" content="Spruko Technologies Private Limited">
-    <meta name="keywords" content="admin,dashboard,template,bootstrap,responsive,ui kit">
+    <meta name="keywords" content="admin, dashboard, template, bootstrap, responsive, ui kit">
 
     <link rel="shortcut icon" type="image/x-icon" href="../assets/images/brand/favicon.ico">
     <title>Login LisDes</title>
@@ -31,11 +31,9 @@
                 <div class="wrap-login100 p-6">
                     <span class="login100-form-title pb-5">
                         <div class="text-center mb-4">
-                            <a href="#"><img src="../assets/images/logo/toko-obat.png" class="header-brand-img" alt="Logo"></a>
+                            <a href="#"><img src="../assets/images/logo/logo-banten.png" class="header-brand-img" alt="Logo"></a>
                         </div>
-                        Toko Obat Herbal<br>
-                        <small>Login Pelanggan</small>
-                        
+                        Toko Obat Herbal
                         <?php
                         if (isset($_GET['pesan'])) {
                             $alert = '';
@@ -49,13 +47,9 @@
                                     $alert = 'danger';
                                     $message = 'Anda Berhasil Logout';
                                     break;
-                                case 'belum_login':
+                                case 'email_sudah_ada':
                                     $alert = 'warning';
-                                    $message = 'Anda Harus Login';
-                                    break;
-                                case 'registrasi_berhasil':
-                                    $alert = 'primary';
-                                    $message = 'Registrasi Berhasil';
+                                    $message = 'Mohon maaf email sudah terdaftar';
                                     break;
                             }
                             if ($alert && $message) {
@@ -72,22 +66,55 @@
                         <div class="panel-body tabs-menu-body p-0 pt-1">
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab5">
-                                    <form method="post" action="cek_login.php">
+                                    <form method="post" action="registrasi_tambah.php">
+                                        <span class="login100-form-title">Registration</span>
+
                                         <div class="wrap-input100 validate-input input-group">
                                             <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
-                                                <i class="zmdi zmdi-account text-muted" aria-hidden="true"></i>
+                                                <i class="mdi mdi-account" aria-hidden="true"></i>
                                             </a>
-                                            <input class="input100 border-start-0 form-control ms-0" type="text" name="username" placeholder="Username" required>
+                                            <input class="input100 border-start-0 ms-0 form-control" type="text" name="nama_pelanggan" placeholder="Nama Pelanggan" required>
                                         </div>
+
+                                        <div class="wrap-input100 validate-input input-group">
+                                            <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
+                                                <i class="zmdi zmdi-email" aria-hidden="true"></i>
+                                            </a>
+                                            <input class="input100 border-start-0 ms-0 form-control" type="email" name="email_pelanggan" placeholder="Email Pelanggan" required>
+                                        </div>
+
                                         <div class="wrap-input100 validate-input input-group" id="Password-toggle">
                                             <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
-                                                <i class="zmdi zmdi-eye text-muted" aria-hidden="true"></i>
+                                                <i class="zmdi zmdi-eye" aria-hidden="true"></i>
                                             </a>
-                                            <input class="input100 border-start-0 form-control ms-0" type="password" name="password" placeholder="Password" required>
+                                            <input class="input100 border-start-0 ms-0 form-control" type="password" name="password_pelanggan" placeholder="Password Pelanggan" required>
                                         </div>
+
+                                        <div class="wrap-input100 validate-input input-group">
+                                            <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
+                                                <i class="zmdi zmdi-smartphone" aria-hidden="true"></i>
+                                            </a>
+                                            <input class="input100 border-start-0 ms-0 form-control" type="text" name="no_hp_pelanggan" placeholder="Nomor HP Pelanggan" required>
+                                        </div>
+
+                                        <div class="wrap-input100 validate-input input-group">
+                                            <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
+                                                <i class="zmdi zmdi-pin" aria-hidden="true"></i>
+                                            </a>
+                                            <input class="input100 border-start-0 ms-0 form-control" type="text" name="alamat_pelanggan" placeholder="Alamat Pelanggan" required>
+                                        </div>
+
+                                        <label class="custom-control custom-checkbox mt-4">
+                                            <input type="checkbox" class="custom-control-input" required>
+                                            <span class="custom-control-label">Agree the <a href="terms.html">terms and policy</a></span>
+                                        </label>
+
                                         <div class="container-login100-form-btn">
-                                            <button type="submit" class="login100-form-btn btn-primary m-1">Login</button>
-                                            <a href="registrasi.php" class="login100-form-btn btn-info m-1">Registrasi</a>
+                                            <button type="submit" class="login100-form-btn btn-primary">Register</button>
+                                        </div>
+
+                                        <div class="text-center pt-3">
+                                            <p class="text-dark mb-0 d-inline-flex">Already have account ?<a href="index.php" class="text-primary ms-1">Sign In</a></p>
                                         </div>
                                     </form>
                                 </div>

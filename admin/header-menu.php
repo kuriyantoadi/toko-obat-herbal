@@ -17,10 +17,9 @@
                     <div class="d-flex">
                         <a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-bs-toggle="sidebar" href="javascript:void(0)"></a>
                         <!-- sidebar-toggle-->
-                        <a class="logo-horizontal " href="index.html">
+                        <a class="logo-horizontal " href="#">
                             <img src="../assets/images/brand/logo-white.png" class="header-brand-img desktop-logo" alt="logo">
-                            <img src="../assets/images/brand/logo-dark.png" class="header-brand-img light-logo1"
-                                alt="logo">
+                            <img src="../assets/images/brand/logo-dark.png" class="header-brand-img light-logo1" alt="logo">
                         </a>
                         <!-- LOGO -->
                         
@@ -106,6 +105,43 @@
                                 <a class="side-menu__item has-link" href="penerima-lisdes.php" >
                                 <i class="side-menu__icon fe fe-zap"></i>
                                 <span class="side-menu__label">Penerima Listrik Desa</span></a>
+                            </li>
+
+                             <!-- <li>
+                                <a class="side-menu__item has-link" href="landing-page.html" target="_blank">
+                                <i class="side-menu__icon fe fe-map"></i>
+                                <span class="side-menu__label">Lokasi Persebaran</span></a>
+                            </li> -->
+
+                             <li>
+                                <a class="side-menu__item has-link" href="staff-desa.php">
+                                <i class="side-menu__icon fe fe-users"></i>
+                                <span class="side-menu__label">Staff Desa</span></a>
+                            </li>
+
+                            <li class="slide">
+                                <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
+                                    <i class="side-menu__icon fe fe-cpu"></i>
+                                    <span class="side-menu__label">Data Master</span><i
+                                        class="angle fe fe-chevron-right"></i>
+                                </a>
+								<ul class="slide-menu">
+									<li class="panel sidetab-menu">
+										
+										<div class="panel-body tabs-menu-body p-0 border-0">
+											<div class="tab-content">
+												<div class="tab-pane active" id="side25">
+													<ul class="sidemenu-list">
+                                                        <li class="side-menu-label1"><a href="javascript:void(0)">Data Master</a></li>
+                                                        <li><a href="kab_kota.php" class="slide-item">Kabupaten/Kota</a></li>
+                                                        <li><a href="kec.php" class="slide-item">Kecamatan</a></li>
+                                                        <li><a href="desa.php" class="slide-item">Desa</a></li>
+													</ul>                                                    
+												</div>												
+											</div>
+										</div>
+									</li>
+								</ul>
                             </li>
 
                             

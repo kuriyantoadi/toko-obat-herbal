@@ -1,26 +1,11 @@
 <?php
 ob_start();
 session_start();
-if ($_SESSION['status'] != "staff-desa-user") {
-    header("location:../staff_desa_login/index.php?pesan=belum_login");
+if ($_SESSION['status'] != "admin") {
+    header("location:../login/index.php?pesan=belum_login");
 }
 
 include '../koneksi.php';
-
-$id_desa = $_SESSION['id_desa'];
-
-$query_desa = "SELECT nama_desa FROM tb_desa WHERE id_desa = '$id_desa'";
-$result_desa = mysqli_query($koneksi, $query_desa);
-
-// Cek apakah query berhasil dan data ditemukan
-if ($result_desa && mysqli_num_rows($result_desa) > 0) {
-    $nama_desa = mysqli_fetch_assoc($result_desa);
-    $nama_desa = $nama_desa['nama_desa'];
-} else {
-    // Jika tidak ada hasil, tampilkan pesan default
-    echo 'Nama desa tidak ditemukan';
-}          
-
 ?>
 
 <!doctype html>

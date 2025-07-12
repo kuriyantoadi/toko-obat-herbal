@@ -34,7 +34,7 @@
                             <a href="#"><img src="../assets/images/logo/toko-obat.png" class="header-brand-img" alt="Logo"></a>
                         </div>
                         Toko Obat Herbal<br>
-                        <small>Login Pelanggan</small>
+                        <small>Login Admin</small>
                         
                         <?php
                         if (isset($_GET['pesan'])) {

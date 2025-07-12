@@ -10,7 +10,7 @@ $username = addslashes(trim($_POST['username']));
 $password = sha1($_POST['password']);
 
 // menyeleksi data operator dengan username dan password yang sesuai
-$data = mysqli_query($koneksi, "SELECT * FROM tb_staff_desa WHERE username='$username' AND password='$password'");
+$data = mysqli_query($koneksi, "SELECT * FROM tb_user WHERE username='$username' AND password='$password'");
 
 // menghitung jumlah data yang ditemukan
 $cek = mysqli_num_rows($data);
@@ -20,25 +20,25 @@ if ($cek > 0) {
 
     // Menyimpan id_user ke dalam session
     $_SESSION['id_user'] = $login['id_user'];
-    $_SESSION['id_desa'] = $login['id_desa'];
-    $_SESSION['id_kecamatan'] = $login['id_kecamatan'];
-    $_SESSION['id_kab_kota'] = $login['id_kab_kota'];
-
     $_SESSION['username'] = $username;
 
-    if ($login['status'] == "staff-desa-user") {
-        $_SESSION['status'] = "staff-desa-user";
+    if ($login['status'] == "admin") {
+        $_SESSION['status'] = "admin";
         $_SESSION['username'] = $username;
+        header("location:../admin/index.php");
+    } elseif ($login['status'] == "admin-staff-desa") {
+        $_SESSION['status'] = "admin-staff-desa";
         $_SESSION['id_desa'] = $login['id_desa'];
         $_SESSION['id_kecamatan'] = $login['id_kecamatan'];
         $_SESSION['id_kab_kota'] = $login['id_kab_kota'];
-        header("location:../staff-desa-user/index.php");
-    // } elseif ($login['status'] == "petugas") {
-    //     $_SESSION['status'] = "petugas";
-    //     header("location:../petugas/index.php");
-    // } elseif ($login['status'] == "manager") {
-    //     $_SESSION['status'] = "manager";
-    //     header("location:../manager/index.php");
+        header("location:../admin-staff-desa/index.php");
+    } elseif ($login['status'] == "surveyor") {
+        $_SESSION['status'] = "surveyor";
+        $_SESSION['username'] = $login['username'];
+        header("location:../surveyor/index.php");
+    } elseif ($login['status'] == "pimpinan") {
+        $_SESSION['status'] = "pimpinan";
+        header("location:../pimpinan/index.php");
     } else {
         header("location:index.php?pesan=gagal1");
     }
