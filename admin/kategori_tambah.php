@@ -1,29 +1,25 @@
 <?php
-session_start();
-if ($_SESSION['status'] != "admin") {
-    header("location:../login.php?pesan=belum_login");
-    exit();
-}
-
 include '../koneksi.php';
 
-// Ambil data dari form
-$nama_kategori = mysqli_real_escape_string($koneksi, $_POST['nama_kategori']);
+$nama_kategori = $_POST['nama_kategori'];
+$deskripsi_kategori = $_POST['deskripsi_kategori'];
+$status_kategori = $_POST['status_kategori'];
+$tanggal_dibuat = date('Y-m-d H:i:s');
 
-// Cek apakah nama kategori sudah ada
-$cek = mysqli_query($koneksi, "SELECT * FROM tb_kategori WHERE nama_kategori = '$nama_kategori'");
+// Cek duplikat
+$cek = mysqli_query($koneksi, "SELECT * FROM tb_kategori_produk WHERE nama_kategori='$nama_kategori'");
 if (mysqli_num_rows($cek) > 0) {
-    // Jika kategori sudah ada
-    header("location:../admin/kategori.php?pesan=duplikat");
+    header("Location: ../admin/kategori.php?pesan=data_sudah_ada");
     exit();
 }
 
-// Simpan ke database
-$simpan = mysqli_query($koneksi, "INSERT INTO tb_kategori (nama_kategori) VALUES ('$nama_kategori')");
+$simpan = mysqli_query($koneksi, "INSERT INTO tb_kategori_produk 
+(nama_kategori, deskripsi_kategori, status_kategori, tanggal_dibuat) 
+VALUES ('$nama_kategori', '$deskripsi_kategori', '$status_kategori', '$tanggal_dibuat')");
 
 if ($simpan) {
-    header("location:../admin/kategori.php?pesan=tambah-berhasil");
+    header("Location: ../admin/kategori.php?pesan=tambah_berhasil");
 } else {
-    header("location:../admin/kategori.php?pesan=tambah-gagal");
+    header("Location: ../admin/kategori.php?pesan=gagal");
 }
 ?>

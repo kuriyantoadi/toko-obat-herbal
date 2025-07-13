@@ -26,7 +26,7 @@ include '../koneksi.php';
     <link rel="shortcut icon" type="image/x-icon" href="../assets/images/brand/favicon.ico">
 
     <!-- TITLE -->
-    <title>Sistem LisDes </title>
+    <title>Herbal Shop</title>
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">

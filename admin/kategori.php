@@ -35,31 +35,40 @@
                                 <?php include('kategori_modal_tambah.php') ?>
 
                                 <table class="table table-bordered text-nowrap border-bottom" id="basic-datatable">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-center">No</th>
-                                            <th class="text-center">Nama Kategori</th>
-                                            <th class="text-center">Pilihan</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        include '../koneksi.php';
-                                        $no = 1;
-                                        $data = mysqli_query($koneksi, "SELECT * FROM tb_kategori");
-                                        while ($d = mysqli_fetch_array($data)) {
-                                        ?>
-                                            <tr>
-                                                <td class="text-center"><?= $no++ ?></td>
-                                                <td class="text-center"><?= $d['nama_kategori'] ?></td>
-                                                <td class="text-center">
-                                                    <button class="btn btn-icon btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modal_edit_kategori<?= $d['id_kategori'] ?>"><i class="fe fe-edit"></i></button>
-                                                    <a href="../admin/kategori_hapus.php?id_kategori=<?= $d['id_kategori'] ?>" class="btn btn-icon btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus kategori ini?')"><i class="fe fe-trash"></i></a>
-                                                    <?php include('kategori_modal_edit.php') ?>
-                                                </td>
-                                            </tr>
-                                        <?php } ?>
-                                    </tbody>
+                                <thead>
+                                <tr>
+                                    <th class="text-center">No</th>
+                                    <th class="text-center">Nama Kategori</th>
+                                    <th class="text-center">Deskripsi</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Tanggal Dibuat</th>
+                                    <th class="text-center">Pilihan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                include '../koneksi.php';
+                                $no = 1;
+                                $data = mysqli_query($koneksi, "SELECT * FROM tb_kategori_produk ORDER BY id_kat_produk DESC");
+                                while ($d = mysqli_fetch_array($data)) {
+                                ?>
+                                    <tr>
+                                        <td class="text-center"><?= $no++ ?></td>
+                                        <td class="text-center"><?= $d['nama_kategori'] ?></td>
+                                        <td><?= $d['deskripsi_kategori'] ?></td>
+                                        <td class="text-center">
+                                            <?= $d['status_kategori'] == 'Aktif' ? '<span class="badge bg-success">Aktif</span>' : '<span class="badge bg-secondary">Tidak Aktif</span>' ?>
+                                        </td>
+                                        <td class="text-center"><?= date('d-m-Y H:i', strtotime($d['tanggal_dibuat'])) ?></td>
+                                        <td class="text-center">
+                                            <button class="btn btn-icon btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modal_edit_kategori<?= $d['id_kat_produk'] ?>"><i class="fe fe-edit"></i></button>
+                                            <a href="../admin/kategori_hapus.php?id_kategori=<?= $d['id_kat_produk'] ?>" class="btn btn-icon btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus kategori ini?')"><i class="fe fe-trash"></i></a>
+                                            <?php include('kategori_modal_edit.php') ?>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+
                                 </table>
 
                             </div>
