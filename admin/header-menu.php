@@ -98,14 +98,51 @@
                             <li class="slide">
                                 <a class="side-menu__item has-link" data-bs-toggle="slide" href="index.php">
                                 <i class="side-menu__icon fe fe-home"></i>
-                                <span class="side-menu__label">Dashboard</span></a>
+                                <span class="side-menu__label">Dashboard Admin</span></a>
                             </li>
 
                             <li>
+                                <a class="side-menu__item has-link" href="kategori.php">
+                                <i class="side-menu__icon fe fe-save"></i>
+                                <span class="side-menu__label">Kategori</span></a>
+                            </li>
+
+                            <li>
+                                <a class="side-menu__item has-link" href="produk.php">
+                                <i class="side-menu__icon fe fe-shopping-bag"></i>
+                                <span class="side-menu__label">Produk</span></a>
+                            </li>
+
+                            <li>
+                                <a class="side-menu__item has-link" href="pesanan.php">
+                                <i class="side-menu__icon fe fe-shopping-cart"></i>
+                                <span class="side-menu__label">Pesanan</span></a>
+                            </li>
+
+                            <li>
+                                <a class="side-menu__item has-link" href="pembayaran.php">
+                                <i class="side-menu__icon fe fe-file-text"></i>
+                                <span class="side-menu__label">Pembayaran</span></a>
+                            </li>
+
+                            <li>
+                                <a class="side-menu__item has-link" href="pelanggan.php">
+                                <i class="side-menu__icon fe fe-users"></i>
+                                <span class="side-menu__label">Pelanggan</span></a>
+                            </li>
+
+                            <li>
+                                <a class="side-menu__item has-link" href="ulasan.php">
+                                <i class="side-menu__icon fe fe-message-circle"></i>
+                                <span class="side-menu__label">Ulasan</span></a>
+                            </li>
+
+
+                            <!-- <li>
                                 <a class="side-menu__item has-link" href="penerima-lisdes.php" >
                                 <i class="side-menu__icon fe fe-zap"></i>
                                 <span class="side-menu__label">Penerima Listrik Desa</span></a>
-                            </li>
+                            </li> -->
 
                              <!-- <li>
                                 <a class="side-menu__item has-link" href="landing-page.html" target="_blank">
@@ -113,39 +150,7 @@
                                 <span class="side-menu__label">Lokasi Persebaran</span></a>
                             </li> -->
 
-                             <li>
-                                <a class="side-menu__item has-link" href="pelanggan.php">
-                                <i class="side-menu__icon fe fe-users"></i>
-                                <span class="side-menu__label">Pelanggan</span></a>
-                            </li>
-
-                            <li class="slide">
-                                <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
-                                    <i class="side-menu__icon fe fe-cpu"></i>
-                                    <span class="side-menu__label">Data Master</span><i
-                                        class="angle fe fe-chevron-right"></i>
-                                </a>
-								<ul class="slide-menu">
-									<li class="panel sidetab-menu">
-										
-										<div class="panel-body tabs-menu-body p-0 border-0">
-											<div class="tab-content">
-												<div class="tab-pane active" id="side25">
-													<ul class="sidemenu-list">
-                                                        <li class="side-menu-label1"><a href="javascript:void(0)">Data Master</a></li>
-                                                        <li><a href="kab_kota.php" class="slide-item">Kabupaten/Kota</a></li>
-                                                        <li><a href="kec.php" class="slide-item">Kecamatan</a></li>
-                                                        <li><a href="desa.php" class="slide-item">Desa</a></li>
-													</ul>                                                    
-												</div>												
-											</div>
-										</div>
-									</li>
-								</ul>
-                            </li>
-
-                            
-                            
+                   
                         </ul>
                         <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"
                                 width="24" height="24" viewBox="0 0 24 24">
