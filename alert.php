@@ -92,6 +92,13 @@ if (isset($_GET['pesan'])) {
                 <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'>x</button>
             </div>
             ";
+        case "konfirmasi_berhasil":
+            echo "
+            <div class='alert alert-info alert-dismissible fade show' role='alert' style='margin-top: 20px'>
+                <strong>Konfirmasi Pembayaran Sukses</strong>
+                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'>x</button>
+            </div>
+            ";
             break;
     }
 }
