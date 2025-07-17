@@ -10,7 +10,7 @@
     <meta name="keywords" content="admin,dashboard,template,bootstrap,responsive,ui kit">
 
     <link rel="shortcut icon" type="image/x-icon" href="../assets/images/brand/favicon.ico">
-    <title>Login LisDes</title>
+    <title>Obat Herbal</title>
 
     <link id="style" href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/css/style.css" rel="stylesheet">
