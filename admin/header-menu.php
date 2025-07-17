@@ -120,12 +120,6 @@
                             </li>
 
                             <li>
-                                <a class="side-menu__item has-link" href="pembayaran.php">
-                                <i class="side-menu__icon fe fe-file-text"></i>
-                                <span class="side-menu__label">Pembayaran</span></a>
-                            </li>
-
-                            <li>
                                 <a class="side-menu__item has-link" href="pelanggan.php">
                                 <i class="side-menu__icon fe fe-users"></i>
                                 <span class="side-menu__label">Pelanggan</span></a>

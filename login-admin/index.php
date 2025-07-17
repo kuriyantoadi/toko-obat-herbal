@@ -31,7 +31,7 @@
                 <div class="wrap-login100 p-6">
                     <span class="login100-form-title pb-5">
                         <div class="text-center mb-4">
-                            <a href="#"><img src="../assets/images/logo/toko-obat.png" class="header-brand-img" alt="Logo"></a>
+                            <a href="#"><img src="../assets/images/brand/icon-login.png" class="header-brand-img" alt="Logo"></a>
                         </div>
                         Toko Obat Herbal<br>
                         <small>Login Admin</small>
