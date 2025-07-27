@@ -11,19 +11,14 @@
         <?php
         include '../koneksi.php';
         $id_order = $row['id_order'];
-        $order = mysqli_fetch_assoc(mysqli_query($koneksi, "
-          SELECT o.*, p.nama_pelanggan, p.no_hp, p.alamat
-          FROM tb_order o
-          JOIN tb_pelanggan p ON o.id_pelanggan = p.id_pelanggan
-          WHERE o.id_order = $id_order
-        "));
+        $order = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM tb_order JOIN tb_pelanggan ON tb_order.id_pelanggan = tb_pelanggan.id_pelanggan WHERE tb_order.id_order = $id_order "));
         ?>
 
         <div class="row mb-3">
           <div class="col-md-6">
-            <p><strong>Nama Pelanggan:</strong> <?= htmlspecialchars($order['nama_pelanggan']) ?></p>
+            <p><strong>Nama Pembeli:</strong> <?= htmlspecialchars($order['nama_pelanggan']) ?></p>
             <p><strong>Alamat:</strong> <?= htmlspecialchars($order['alamat_pelanggan']) ?></p>
-            <p><strong>No. HP:</strong> <?= htmlspecialchars($order['no_hp']) ?></p>
+            <p><strong>No. HP:</strong> <?= htmlspecialchars($order['no_hp_pelanggan']) ?></p>
             <p><strong>Status Pembayaran:</strong> 
               <span class="badge bg-<?= strtolower($order['status_pembayaran']) == 'lunas' ? 'success' : 'warning' ?>">
                 <?= ucfirst($order['status_pembayaran']) ?>

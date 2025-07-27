@@ -52,12 +52,12 @@
                                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                                 <div class="drop-heading">
                                                     <div class="text-left">
-                                                        <h5 class="text-dark mb-0 fs-14 fw-semibold"><?= $_SESSION['username'] ?></h5>
+                                                        <h5 class="text-dark mb-0 fs-14 fw-semibold"><?= $_SESSION['nama_pelanggan'] ?></h5>
                                                         <small class="text-muted"><?= $_SESSION['status'] ?></small>
                                                     </div>
                                                 </div>
                                                 
-                                                <a class="dropdown-item" href="../login-admin/logout.php">
+                                                <a class="dropdown-item" href="../login/logout.php">
                                                     <i class="dropdown-icon fe fe-alert-circle"></i> Sign out
                                                 </a>
                                             </div>

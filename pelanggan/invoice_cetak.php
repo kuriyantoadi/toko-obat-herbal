@@ -2,7 +2,7 @@
 include '../koneksi.php';
 
 $id_order = isset($_GET['id']) ? intval($_GET['id']) : 0;
-$order = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM tb_order WHERE id_order = $id_order"));
+$order = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM tb_order JOIN tb_pelanggan ON tb_order.id_pelanggan = tb_pelanggan.id_pelanggan WHERE tb_order.id_order = $id_order"));
 
 if (!$order) {
     die("Data pesanan tidak ditemukan.");
@@ -36,9 +36,9 @@ $produk = mysqli_query($koneksi, "
 </head>
 <body>
   <h2>Invoice #<?= $order['id_order'] ?></h2>
-  <p><strong>Nama:</strong> <?= htmlspecialchars($order['nama_pembeli']) ?></p>
-  <p><strong>Alamat:</strong> <?= htmlspecialchars($order['alamat_pembeli']) ?></p>
-  <p><strong>No. HP:</strong> <?= htmlspecialchars($order['no_hp']) ?></p>
+  <p><strong>Nama:</strong> <?= htmlspecialchars($order['nama_pelanggan']) ?></p>
+  <p><strong>Alamat:</strong> <?= htmlspecialchars($order['alamat_pelanggan']) ?></p>
+  <p><strong>No. HP:</strong> <?= htmlspecialchars($order['no_hp_pelanggan']) ?></p>
   <p><strong>Tanggal:</strong> <?= date('d-m-Y H:i', strtotime($order['tanggal_order'])) ?></p>
   <p><strong>Status Pembayaran:</strong> <?= ucfirst($order['status_pembayaran']) ?></p>
 

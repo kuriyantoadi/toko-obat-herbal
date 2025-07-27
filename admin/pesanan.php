@@ -8,42 +8,42 @@
 
       <!-- PAGE HEADER -->
       <div class="page-header">
-        <h1 class="page-title">Daftar Pesanan</h1>
+        <h1 class="page-title">Pesanan Lunas</h1>
         <div>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Pesanan</li>
+            <li class="breadcrumb-item active" aria-current="page">Lunas</li>
           </ol>
         </div>
       </div>
 
-      <!-- PESANAN TABLE -->
+      <!-- TABEL PESANAN LUNAS -->
       <div class="row">
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Data Checkout / Pesanan Masuk</h3>
+              <h3 class="card-title">Daftar Pesanan yang Sudah Lunas</h3>
             </div>
             <div class="card-body table-responsive">
-                <?php include('../alert.php') ?>
-                <?php include('pesanan-btn.php') ?>
-              <table class="table table-bordered table-striped" id="datatable-pesanan">
+            <?php include('../alert.php') ?>
+            <?php include('pesanan-btn.php') ?>
+              <table class="table table-bordered table-striped" id="lunas-datatable">
                 <thead>
                   <tr>
                     <th>No</th>
                     <th>Tanggal</th>
                     <th>Nama Pembeli</th>
                     <th>No. HP</th>
-                    <th>Alamat Pembeli</th>
+                    <th>Alamat</th>
                     <th>Total</th>
-                    <th>Status Pembayaran</th>
-                    <th>Detail</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php
                   $no = 1;
-                  $data = mysqli_query($koneksi, "SELECT * FROM tb_order, tb_pelanggan WHERE tb_order.id_pelanggan=tb_pelanggan.id_pelanggan ORDER BY tanggal_order DESC");
+                  $data = mysqli_query($koneksi, "SELECT * FROM tb_pelanggan, tb_order WHERE tb_pelanggan.id_pelanggan=tb_order.id_order ORDER BY tanggal_order DESC");
                   while ($row = mysqli_fetch_array($data)) {
                   ?>
                     <tr>
@@ -53,39 +53,20 @@
                       <td><?= htmlspecialchars($row['no_hp_pelanggan']) ?></td>
                       <td><?= htmlspecialchars($row['alamat_pelanggan']) ?></td>
                       <td>Rp<?= number_format($row['total'], 0, ',', '.') ?></td>
-                        
-                      <td><center>
-                        <span class="badge bg-<?= $row['status_pembayaran'] == 'lunas' ? 'success' : 'danger' ?>">
-                          <?= ucfirst($row['status_pembayaran']) ?>
-                        </span>
-                      </td>
+                      <td><span class="badge bg-success"><?= ucfirst($row['status_pembayaran']) ?></span></td>
                       <td>
-                            <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modal_detail_pesanan<?= $row['id_order'] ?>">
-                                <i class="fe fe-eye"></i> Detail
-                            </button>
+                        <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modal_detail_pesanan<?= $row['id_order'] ?>">
+                          <i class="fe fe-eye"></i> Detail
+                        </button>
+                        <?php include('pesanan_modal_detail.php'); ?>
 
-                            <?php include('pesanan_modal_detail.php'); ?>
-                            <a href="invoice_cetak.php?id=<?= $row['id_order'] ?>" target="_blank" class="btn btn-warning btn-sm">
-                                <i class="fe fe-printer"></i> Invoice
-                            </a>
-                       
-
-                          <!-- Tombol Konfirmasi Pembayaran -->
-                            <?php if (strtolower($row['status_pembayaran']) != 'lunas') { ?>
-                            <button class="btn btn-success btn-sm mt-1" data-bs-toggle="modal" data-bs-target="#modal_konfirmasi<?= $row['id_order'] ?>">
-                                <i class="fe fe-check-circle"></i> Konfirmasi
-                            </button>
-                            <?php include('pesanan_modal_konfirmasi.php'); }?>
-                           
-                        </td>
-
+                        <a href="invoice_cetak.php?id=<?= $row['id_order'] ?>" target="_blank" class="btn btn-warning btn-sm">
+                          <i class="fe fe-printer"></i> Invoice
+                        </a>
+                      </td>
                     </tr>
                   <?php } ?>
-                  <?php if (mysqli_num_rows($data) == 0): ?>
-                    <tr>
-                      <td colspan="9" class="text-center">Belum ada pesanan.</td>
-                    </tr>
-                  <?php endif; ?>
+                  
                 </tbody>
               </table>
             </div>
@@ -99,17 +80,22 @@
 
 <?php include('footer.php'); ?>
 
-<!-- Tambahkan DataTables -->
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
-<link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
-
+<!-- DataTable Script -->
 <script>
-  $(document).ready(function() {
-    $('#datatable-pesanan').DataTable({
-      responsive: true,
+  $(document).ready(function () {
+    $('#lunas-datatable').DataTable({
       language: {
-        url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/id.json'
+        search: "Cari:",
+        lengthMenu: "Tampilkan _MENU_ entri",
+        info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ entri",
+        paginate: {
+          first: "Pertama",
+          last: "Terakhir",
+          next: "Berikutnya",
+          previous: "Sebelumnya"
+        },
+        zeroRecords: "Tidak ada data ditemukan",
+        infoEmpty: "Menampilkan 0 sampai 0 dari 0 entri"
       }
     });
   });

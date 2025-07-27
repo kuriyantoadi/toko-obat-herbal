@@ -11,7 +11,7 @@
         <?php
         include '../koneksi.php';
         $id_order = $row['id_order'];
-        $order = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM tb_order JOIN tb_pelanggan ON tb_order.id_pelanggan = tb_pelanggan.id_pelanggan WHERE tb_order.id_order = 1 "));
+        $order = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM tb_order JOIN tb_pelanggan ON tb_order.id_pelanggan = tb_pelanggan.id_pelanggan WHERE tb_order.id_order = $id_order "));
         ?>
 
         <div class="row mb-3">
