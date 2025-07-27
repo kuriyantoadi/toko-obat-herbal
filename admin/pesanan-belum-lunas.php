@@ -43,17 +43,31 @@
                 <tbody>
                   <?php
                   $no = 1;
-                  $data = mysqli_query($koneksi, "SELECT * FROM tb_order WHERE status_pembayaran != 'lunas' ORDER BY tanggal_order DESC");
+                  $data = mysqli_query($koneksi, "SELECT * 
+                                                  FROM tb_pelanggan, tb_order 
+                                                  WHERE tb_pelanggan.id_pelanggan = tb_order.id_pelanggan 
+                                                  AND tb_order.status_pembayaran != 'lunas' 
+                                                  ORDER BY tb_order.tanggal_order DESC
+                                                  ");
                   while ($row = mysqli_fetch_array($data)) {
                   ?>
                     <tr>
                       <td><?= $no++ ?></td>
                       <td><?= date('d-m-Y H:i', strtotime($row['tanggal_order'])) ?></td>
-                      <td><?= htmlspecialchars($row['nama_pembeli']) ?></td>
-                      <td><?= htmlspecialchars($row['no_hp']) ?></td>
-                      <td><?= htmlspecialchars($row['alamat_pembeli']) ?></td>
+                      <td><?= htmlspecialchars($row['nama_pelanggan']) ?></td>
+                      <td><?= htmlspecialchars($row['no_hp_pelanggan']) ?></td>
+                      <td><?= htmlspecialchars($row['alamat_pelanggan']) ?></td>
                       <td>Rp<?= number_format($row['total'], 0, ',', '.') ?></td>
-                      <td><span class="badge bg-danger"><?= ucfirst($row['status_pembayaran']) ?></span></td>
+                      <td>
+                        <?php
+                          $status = strtolower($row['status_pembayaran']);
+                          $badgeClass = ($status == 'lunas') ? 'success' : 'danger';
+                          ?>
+                          <div class="d-flex justify-content-center">
+                              <span class="badge bg-<?= $badgeClass ?>"><?= ucfirst($row['status_pembayaran']) ?></span>
+                          </div>
+
+                      </td>
                       <td>
                         <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modal_detail_pesanan<?= $row['id_order'] ?>">
                           <i class="fe fe-eye"></i> Detail
