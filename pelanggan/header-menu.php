@@ -98,31 +98,25 @@
                             <li class="slide">
                                 <a class="side-menu__item has-link" data-bs-toggle="slide" href="index.php">
                                 <i class="side-menu__icon fe fe-home"></i>
-                                <span class="side-menu__label">Dashboard Admin</span></a>
-                            </li>
-
-                            <li>
-                                <a class="side-menu__item has-link" href="kategori.php">
-                                <i class="side-menu__icon fe fe-save"></i>
-                                <span class="side-menu__label">Kategori</span></a>
+                                <span class="side-menu__label">Dashboard Pelanggan</span></a>
                             </li>
 
                             <li>
                                 <a class="side-menu__item has-link" href="produk.php">
-                                <i class="side-menu__icon fe fe-shopping-bag"></i>
+                                <i class="side-menu__icon fe fe-box"></i>
                                 <span class="side-menu__label">Produk</span></a>
-                            </li>
+                            </li>                           
 
                             <li>
+                                <a class="side-menu__item has-link" href="cart.php">
+                                <i class="side-menu__icon fe fe-shopping-bag"></i>
+                                <span class="side-menu__label">Keranjang</span></a>
+                            </li>
+
+                             <li>
                                 <a class="side-menu__item has-link" href="pesanan.php">
                                 <i class="side-menu__icon fe fe-shopping-cart"></i>
                                 <span class="side-menu__label">Pesanan</span></a>
-                            </li>
-
-                            <li>
-                                <a class="side-menu__item has-link" href="pelanggan.php">
-                                <i class="side-menu__icon fe fe-users"></i>
-                                <span class="side-menu__label">Pelanggan</span></a>
                             </li>
 
                             <li>

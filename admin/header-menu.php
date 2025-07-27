@@ -109,7 +109,7 @@
 
                             <li>
                                 <a class="side-menu__item has-link" href="produk.php">
-                                <i class="side-menu__icon fe fe-shopping-bag"></i>
+                                <i class="side-menu__icon fe fe-box"></i>
                                 <span class="side-menu__label">Produk</span></a>
                             </li>
 

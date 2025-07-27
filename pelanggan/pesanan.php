@@ -2,6 +2,11 @@
 <?php include('header-menu.php'); ?>
 <?php include('../koneksi.php'); ?>
 
+<?php 
+$id_pelanggan = $_SESSION['id_pelanggan']; // Simulasi login, ganti dengan session yang sesuai
+
+?>
+
 <div class="main-content app-content mt-0">
   <div class="side-app">
     <div class="main-container container-fluid">
@@ -26,7 +31,6 @@
             </div>
             <div class="card-body table-responsive">
                 <?php include('../alert.php') ?>
-                <?php include('pesanan-btn.php') ?>
               <table class="table table-bordered table-striped" id="datatable-pesanan">
                 <thead>
                   <tr>
@@ -43,15 +47,15 @@
                 <tbody>
                   <?php
                   $no = 1;
-                  $data = mysqli_query($koneksi, "SELECT * FROM tb_order, tb_pelanggan WHERE tb_order.id_pelanggan=tb_pelanggan.id_pelanggan ORDER BY tanggal_order DESC");
+                  $data = mysqli_query($koneksi, "SELECT * FROM tb_order WHERE id_pelanggan=$id_pelanggan ORDER BY tanggal_order DESC");
                   while ($row = mysqli_fetch_array($data)) {
                   ?>
                     <tr>
                       <td><?= $no++ ?></td>
                       <td><?= date('d-m-Y H:i', strtotime($row['tanggal_order'])) ?></td>
-                      <td><?= htmlspecialchars($row['nama_pelanggan']) ?></td>
-                      <td><?= htmlspecialchars($row['no_hp_pelanggan']) ?></td>
-                      <td><?= htmlspecialchars($row['alamat_pelanggan']) ?></td>
+                      <td><?= htmlspecialchars($row['nama_pembeli']) ?></td>
+                      <td><?= htmlspecialchars($row['no_hp']) ?></td>
+                      <td><?= htmlspecialchars($row['alamat_pembeli']) ?></td>
                       <td>Rp<?= number_format($row['total'], 0, ',', '.') ?></td>
                         
                       <td><center>
