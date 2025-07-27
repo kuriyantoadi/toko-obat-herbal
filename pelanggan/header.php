@@ -1,3 +1,16 @@
+<?php
+ob_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+if ($_SESSION['status'] != "aktif") {
+    header("location:../login/index.php?pesan=belum_login");
+}
+
+include '../koneksi.php';
+?>
+
 <!doctype html>
 <html lang="en" dir="ltr">
 
@@ -16,7 +29,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="../assets/images/brand/favicon.ico">
 
     <!-- TITLE -->
-    <title>Sistem LisDes </title>
+    <title>Herbal Shop</title>
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">

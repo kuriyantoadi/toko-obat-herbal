@@ -57,7 +57,7 @@
                                                     </div>
                                                 </div>
                                                 
-                                                <a class="dropdown-item" href="../login/logout.php">
+                                                <a class="dropdown-item" href="../login-admin/logout.php">
                                                     <i class="dropdown-icon fe fe-alert-circle"></i> Sign out
                                                 </a>
                                             </div>
@@ -130,21 +130,7 @@
                                 <i class="side-menu__icon fe fe-message-circle"></i>
                                 <span class="side-menu__label">Ulasan</span></a>
                             </li>
-
-
-                            <!-- <li>
-                                <a class="side-menu__item has-link" href="penerima-lisdes.php" >
-                                <i class="side-menu__icon fe fe-zap"></i>
-                                <span class="side-menu__label">Penerima Listrik Desa</span></a>
-                            </li> -->
-
-                             <!-- <li>
-                                <a class="side-menu__item has-link" href="landing-page.html" target="_blank">
-                                <i class="side-menu__icon fe fe-map"></i>
-                                <span class="side-menu__label">Lokasi Persebaran</span></a>
-                            </li> -->
-
-                   
+       
                         </ul>
                         <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"
                                 width="24" height="24" viewBox="0 0 24 24">

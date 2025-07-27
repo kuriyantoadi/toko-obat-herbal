@@ -10,22 +10,28 @@
         <div class="modal-body">
           <input type="hidden" name="id_kat_produk" value="<?= $d['id_kat_produk'] ?>">
 
-          <div class="mb-3">
-            <label>Nama Kategori</label>
-            <input type="text" name="nama_kategori" class="form-control" value="<?= $d['nama_kategori'] ?>" required>
+          <div class="mb-3 row align-items-center">
+            <label class="col-sm-4 col-form-label">Nama Kategori</label>
+            <div class="col-sm-8">
+              <input type="text" name="nama_kategori" class="form-control" value="<?= $d['nama_kategori'] ?>" required>
+            </div>
           </div>
 
-          <div class="mb-3">
-            <label>Deskripsi</label>
-            <textarea name="deskripsi_kategori" class="form-control" required><?= $d['deskripsi_kategori'] ?></textarea>
+          <div class="mb-3 row align-items-center">
+            <label class="col-sm-4 col-form-label">Deskripsi</label>
+            <div class="col-sm-8">
+              <textarea name="deskripsi_kategori" class="form-control" rows="3" required><?= $d['deskripsi_kategori'] ?></textarea>
+            </div>
           </div>
 
-          <div class="mb-3">
-            <label>Status</label>
-            <select name="status_kategori" class="form-control" required>
-              <option value="Aktif" <?= $d['status_kategori'] == 'Aktif' ? 'selected' : '' ?>>Aktif</option>
-              <option value="Tidak Aktif" <?= $d['status_kategori'] == 'Tidak Aktif' ? 'selected' : '' ?>>Tidak Aktif</option>
-            </select>
+          <div class="mb-3 row align-items-center">
+            <label class="col-sm-4 col-form-label">Status</label>
+            <div class="col-sm-8">
+              <select name="status_kategori" class="form-control" required>
+                <option value="Aktif" <?= $d['status_kategori'] == 'Aktif' ? 'selected' : '' ?>>Aktif</option>
+                <option value="Tidak Aktif" <?= $d['status_kategori'] == 'Tidak Aktif' ? 'selected' : '' ?>>Tidak Aktif</option>
+              </select>
+            </div>
           </div>
 
         </div>

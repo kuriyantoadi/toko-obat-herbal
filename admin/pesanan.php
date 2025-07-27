@@ -26,7 +26,8 @@
             </div>
             <div class="card-body table-responsive">
                 <?php include('../alert.php') ?>
-              <table class="table table-bordered table-striped">
+                <?php include('pesanan-btn.php') ?>
+              <table class="table table-bordered table-striped" id="datatable-pesanan">
                 <thead>
                   <tr>
                     <th>No</th>
@@ -64,7 +65,7 @@
                             </button>
 
                             <?php include('pesanan_modal_detail.php'); ?>
-                            <a href="invoice_cetak.php?id=<?= $row['id_order'] ?>" target="_blank" class="btn btn-outline-secondary btn-sm mt-1">
+                            <a href="invoice_cetak.php?id=<?= $row['id_order'] ?>" target="_blank" class="btn btn-warning btn-sm">
                                 <i class="fe fe-printer"></i> Invoice
                             </a>
                        
@@ -74,11 +75,8 @@
                             <button class="btn btn-success btn-sm mt-1" data-bs-toggle="modal" data-bs-target="#modal_konfirmasi<?= $row['id_order'] ?>">
                                 <i class="fe fe-check-circle"></i> Konfirmasi
                             </button>
-                            <?php include('pesanan_modal_konfirmasi.php'); ?>
-                            <?php } else { ?>
-                            <span class="badge bg-success mt-1">Sudah Lunas</span>
-                            <?php } ?>
-
+                            <?php include('pesanan_modal_konfirmasi.php'); }?>
+                           
                         </td>
 
                     </tr>
@@ -100,3 +98,19 @@
 </div>
 
 <?php include('footer.php'); ?>
+
+<!-- Tambahkan DataTables -->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+
+<script>
+  $(document).ready(function() {
+    $('#datatable-pesanan').DataTable({
+      responsive: true,
+      language: {
+        url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/id.json'
+      }
+    });
+  });
+</script>

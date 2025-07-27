@@ -1,39 +1,33 @@
 <?php
-// Aktifkan session
 session_start();
-
-// Koneksi ke database
 include '../koneksi.php';
 
-// Ambil data dari form dan bersihkan
-$email = trim($_POST['username']); // 'username' di form sebenarnya email
-$password = $_POST['password'];
+// Ambil input dan hindari SQL Injection
+$email = mysqli_real_escape_string($koneksi, trim($_POST['username']));
+$password = $_POST['password']; // jangan escape password
 
-// Cek apakah data pelanggan tersedia
+// Cek email di database
 $query = mysqli_query($koneksi, "SELECT * FROM tb_pelanggan WHERE email_pelanggan = '$email'");
-$cek = mysqli_num_rows($query);
+$data = mysqli_fetch_assoc($query);
 
-if ($cek > 0) {
-    $data = mysqli_fetch_assoc($query);
-
-    // Verifikasi password
+if ($data) {
+    // Verifikasi password (pastikan menggunakan password_hash saat registrasi)
     if (password_verify($password, $data['password_pelanggan'])) {
-        // Simpan data ke session
+        // Set session
         $_SESSION['id_pelanggan'] = $data['id_pelanggan'];
         $_SESSION['nama_pelanggan'] = $data['nama_pelanggan'];
-        $_SESSION['status'] = 'pelanggan';
-
-        // Redirect ke halaman pelanggan
-        header("location:../pelanggan/index.php");
-        exit();
+        $_SESSION['status'] = 'aktif';
+        // echo "test 1";
+        header("Location: ../pelanggan/index.php");
+        exit;
     } else {
-        // Password salah
-        header("location:index.php?pesan=gagal");
-        exit();
+        // header("Location: index.php?pesan=gagal");
+        echo "test 2";
+        exit;
     }
 } else {
-    // Email tidak ditemukan
-    header("location:index.php?pesan=gagal");
-    exit();
+    // header("Location: index.php?pesan=gagal");
+    echo "test 3";
+    exit;
 }
 ?>

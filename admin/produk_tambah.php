@@ -32,7 +32,7 @@ if (move_uploaded_file($tmp, $folder_upload . $gambar_baru)) {
     // Simpan ke database
     $query = "INSERT INTO tb_produk (
         id_kat_produk, nama_produk, stok_produk, gambar_produk, 
-        tanggal_ditambahkan, dekripsi_produk, berat_produk, harga_produk
+        tanggal_ditambahkan, deskripsi_produk, berat_produk, harga_produk
     ) VALUES (
         '$id_kategori', '$nama_produk', '$stok_produk', '$gambar_baru', 
         '$tanggal_tambah', '$deskripsi_produk', '$berat_produk', '$harga_produk'

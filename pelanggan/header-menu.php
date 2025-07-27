@@ -19,8 +19,7 @@
                         <!-- sidebar-toggle-->
                         <a class="logo-horizontal " href="#">
                             <img src="../assets/images/brand/logo-white.png" class="header-brand-img desktop-logo" alt="logo">
-                            <img src="../assets/images/brand/logo-dark.png" class="header-brand-img light-logo1"
-                                alt="logo">
+                            <img src="../assets/images/brand/logo-dark.png" class="header-brand-img light-logo1" alt="logo">
                         </a>
                         <!-- LOGO -->
                         
@@ -58,7 +57,7 @@
                                                     </div>
                                                 </div>
                                                 
-                                                <a class="dropdown-item" href="../login/logout.php">
+                                                <a class="dropdown-item" href="../login-admin/logout.php">
                                                     <i class="dropdown-icon fe fe-alert-circle"></i> Sign out
                                                 </a>
                                             </div>
@@ -99,15 +98,39 @@
                             <li class="slide">
                                 <a class="side-menu__item has-link" data-bs-toggle="slide" href="index.php">
                                 <i class="side-menu__icon fe fe-home"></i>
-                                <span class="side-menu__label">Dashboard</span></a>
+                                <span class="side-menu__label">Dashboard Admin</span></a>
                             </li>
-                        
+
                             <li>
-                                <a class="side-menu__item has-link" href="penerima-lisdes.php" >
-                                <i class="side-menu__icon fe fe-zap"></i>
-                                <span class="side-menu__label">Penerima Listrik Desa</span></a>
+                                <a class="side-menu__item has-link" href="kategori.php">
+                                <i class="side-menu__icon fe fe-save"></i>
+                                <span class="side-menu__label">Kategori</span></a>
                             </li>
-                            
+
+                            <li>
+                                <a class="side-menu__item has-link" href="produk.php">
+                                <i class="side-menu__icon fe fe-shopping-bag"></i>
+                                <span class="side-menu__label">Produk</span></a>
+                            </li>
+
+                            <li>
+                                <a class="side-menu__item has-link" href="pesanan.php">
+                                <i class="side-menu__icon fe fe-shopping-cart"></i>
+                                <span class="side-menu__label">Pesanan</span></a>
+                            </li>
+
+                            <li>
+                                <a class="side-menu__item has-link" href="pelanggan.php">
+                                <i class="side-menu__icon fe fe-users"></i>
+                                <span class="side-menu__label">Pelanggan</span></a>
+                            </li>
+
+                            <li>
+                                <a class="side-menu__item has-link" href="ulasan.php">
+                                <i class="side-menu__icon fe fe-message-circle"></i>
+                                <span class="side-menu__label">Ulasan</span></a>
+                            </li>
+       
                         </ul>
                         <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"
                                 width="24" height="24" viewBox="0 0 24 24">

@@ -57,7 +57,7 @@
                                         <td class="text-center"><?= $d['nama_kategori'] ?></td>
                                         <td><?= $d['deskripsi_kategori'] ?></td>
                                         <td class="text-center">
-                                            <?= $d['status_kategori'] == 'Aktif' ? '<span class="badge bg-success">Aktif</span>' : '<span class="badge bg-secondary">Tidak Aktif</span>' ?>
+                                            <?= $d['status_kategori'] == 'aktif' ? '<span class="badge bg-success">Aktif</span>' : '<span class="badge bg-secondary">Tidak Aktif</span>' ?>
                                         </td>
                                         <td class="text-center"><?= date('d-m-Y H:i', strtotime($d['tanggal_dibuat'])) ?></td>
                                         <td class="text-center">
