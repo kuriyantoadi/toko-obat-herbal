@@ -7,7 +7,7 @@ if (isset($_GET['pesan'])) {
             echo "
             <div class='alert alert-danger alert-dismissible fade show' role='alert'>
                 Username atau Password Salah
-                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'>x</button>
+                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'></button>
             </div>
             ";
             break;
@@ -16,7 +16,7 @@ if (isset($_GET['pesan'])) {
             echo "
             <div class='alert alert-primary alert-dismissible fade show' role='alert'>
                 Anda Berhasil Logout
-                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'>x</button>
+                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'></button>
             </div>
             ";
             break;
@@ -25,7 +25,7 @@ if (isset($_GET['pesan'])) {
             echo "
             <div class='alert alert-primary alert-dismissible fade show' role='alert'>
                 Anda Harus Login
-                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'>x</button>
+                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'></button>
             </div>
             ";
             break;
@@ -34,7 +34,7 @@ if (isset($_GET['pesan'])) {
             echo "
             <div class='alert alert-primary alert-dismissible fade show' role='alert' style='margin-top: 20px'>
                 <strong>Edit Data Berhasil</strong>
-                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'>x</button>
+                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'></button>
             </div>
             ";
             break;
@@ -43,7 +43,7 @@ if (isset($_GET['pesan'])) {
             echo "
             <div class='alert alert-primary alert-dismissible fade show' role='alert' style='margin-top: 20px'>
                 <strong>Hapus Data Berhasil</strong>
-                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'>x</button>
+                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'></button>
             </div>
             ";
             break;
@@ -53,7 +53,7 @@ if (isset($_GET['pesan'])) {
             echo "
             <div class='alert alert-primary alert-dismissible fade show' role='alert' style='margin-top: 20px'>
                 <strong>Tambah Data Berhasil</strong>
-                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'>x</button>
+                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'></button>
             </div>
             ";
             break;
@@ -62,7 +62,7 @@ if (isset($_GET['pesan'])) {
             echo "
             <div class='alert alert-primary alert-dismissible fade show' role='alert' style='margin-top: 20px'>
                 <strong>Edit Password Berhasil</strong>
-                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'>x</button>
+                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'></button>
             </div>
             ";
             break;
@@ -71,7 +71,7 @@ if (isset($_GET['pesan'])) {
             echo "
             <div class='alert alert-warning alert-dismissible fade show' role='alert' style='margin-top: 20px'>
                 <strong>Tambah Data Gagal, Data Sudah Ada</strong>
-                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'>x</button>
+                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'></button>
             </div>
             ";
             break;
@@ -80,7 +80,7 @@ if (isset($_GET['pesan'])) {
             echo "
             <div class='alert alert-warning alert-dismissible fade show' role='alert' style='margin-top: 20px'>
                 <strong>Tambah Data Gagal, NIK Sudah Ada</strong>
-                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'>x</button>
+                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'></button>
             </div>
             ";
             break;
@@ -89,17 +89,77 @@ if (isset($_GET['pesan'])) {
             echo "
             <div class='alert alert-info alert-dismissible fade show' role='alert' style='margin-top: 20px'>
                 <strong>Update Status Listrik Desa Berhasil</strong>
-                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'>x</button>
+                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'></button>
             </div>
             ";
+            break;
+
         case "konfirmasi_berhasil":
             echo "
             <div class='alert alert-info alert-dismissible fade show' role='alert' style='margin-top: 20px'>
                 <strong>Konfirmasi Pembayaran Sukses</strong>
-                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'>x</button>
+                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'></button>
             </div>
             ";
             break;
+
+        case "kategori_dipakai":
+            echo "
+            <div class='alert alert-danger alert-dismissible fade show' role='alert' style='margin-top: 20px'>
+                <strong>Kategori tidak dapat dihapus</strong><br>
+                Karena masih digunakan oleh produk yang terdaftar.
+                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>
+            ";
+            break;
+
+        case "id_tidak_valid":
+            echo "
+            <div class='alert alert-warning alert-dismissible fade show' role='alert' style='margin-top: 20px'>
+                ID kategori tidak valid.
+                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>
+            ";
+            break;
+
+        case "hapus_gagal":
+            echo "
+            <div class='alert alert-danger alert-dismissible fade show' role='alert' style='margin-top: 20px'>
+                <strong>Gagal Menghapus Data</strong><br>
+                Silakan coba lagi atau hubungi administrator.
+                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>
+            ";
+            break;
+
+        case "id_tidak_valid":
+            echo "
+            <div class='alert alert-warning alert-dismissible fade show' role='alert' style='margin-top: 20px'>
+                ID Produk tidak valid.
+                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>
+            ";
+            break;
+
+        case "id_tidak_ditemukan":
+            echo "
+            <div class='alert alert-warning alert-dismissible fade show' role='alert' style='margin-top: 20px'>
+                Produk tidak ditemukan atau sudah dihapus sebelumnya.
+                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>
+            ";
+            break;
+
+        case "hapus_gagal":
+            echo "
+            <div class='alert alert-danger alert-dismissible fade show' role='alert' style='margin-top: 20px'>
+                <strong>Gagal Menghapus Produk</strong><br>
+                Silakan coba lagi atau hubungi administrator.
+                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>
+            ";
+            break;
+
     }
 }
 ?>

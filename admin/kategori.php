@@ -62,7 +62,7 @@
                                         <td class="text-center"><?= date('d-m-Y H:i', strtotime($d['tanggal_dibuat'])) ?></td>
                                         <td class="text-center">
                                             <button class="btn btn-icon btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modal_edit_kategori<?= $d['id_kat_produk'] ?>"><i class="fe fe-edit"></i></button>
-                                            <a href="../admin/kategori_hapus.php?id_kategori=<?= $d['id_kat_produk'] ?>" class="btn btn-icon btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus kategori ini?')"><i class="fe fe-trash"></i></a>
+                                            <a href="kategori_hapus.php?id_kat_produk=<?= $d['id_kat_produk'] ?>" class="btn btn-icon btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus kategori ini?')"><i class="fe fe-trash"></i></a>
                                             <?php include('kategori_modal_edit.php') ?>
                                         </td>
                                     </tr>

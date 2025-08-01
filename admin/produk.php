@@ -105,7 +105,7 @@ $produk = mysqli_query($koneksi, "
                       <ul class="icons">
                         <li><a href="produk_deskripsi.php?id=<?= $p['id_produk'] ?>" class="btn btn-primary"><i class="fe fe-eye"></i></a></li>
                         <li><button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal_edit_produk<?= $p['id_produk'] ?>"><i class="fe fe-edit"></i></button></li>
-                        <li><a href="../admin/produk_hapus.php?id=<?= $p['id_produk'] ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus produk ini?')"><i class="fe fe-x"></i></a></li>
+                        <li><a href="produk_hapus.php?id_produk=<?= $p['id_produk'] ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus produk ini?')"><i class="fe fe-x"></i></a></li>
                       </ul>
                       <a href="produk_deskripsi.php?id=<?= $p['id_produk'] ?>">
                         <img class="img-fluid br-7 w-100" src="../uploads/produk/<?= $p['gambar_produk'] ?>" alt="produk">

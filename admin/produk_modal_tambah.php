@@ -42,7 +42,7 @@
           <div class="row mb-3">
             <label class="col-md-3 form-label">Deskripsi Produk</label>
             <div class="col-md-9">
-              <textarea name="dekripsi_produk" class="form-control" rows="3" placeholder="Deskripsi produk..." required></textarea>
+              <textarea name="deskripsi_produk" class="form-control" rows="3" placeholder="Deskripsi produk..." required></textarea>
             </div>
           </div>
 
