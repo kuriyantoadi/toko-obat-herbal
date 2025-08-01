@@ -11,7 +11,13 @@
         <?php
         include '../koneksi.php';
         $id_order = $row['id_order'];
-        $order = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM tb_order JOIN tb_pelanggan ON tb_order.id_pelanggan = tb_pelanggan.id_pelanggan WHERE tb_order.id_order = $id_order "));
+
+        // Ambil data order
+        $order = mysqli_fetch_assoc(mysqli_query($koneksi, "
+            SELECT * FROM tb_order 
+            JOIN tb_pelanggan ON tb_order.id_pelanggan = tb_pelanggan.id_pelanggan 
+            WHERE tb_order.id_order = $id_order
+        "));
         ?>
 
         <div class="row mb-3">
@@ -40,7 +46,7 @@
 
         <hr>
 
-        <h6>Daftar Produk:</h6>
+        <h6><strong>Daftar Produk:</strong></h6>
         <div class="table-responsive">
           <table class="table table-bordered table-sm">
             <thead class="table-light">
@@ -57,10 +63,10 @@
               $no = 1;
               $total = 0;
               $detail = mysqli_query($koneksi, "
-                SELECT d.*, p.nama_produk, p.harga_produk
-                FROM tb_order_detail d
-                JOIN tb_produk p ON d.id_produk = p.id_produk
-                WHERE d.id_order = $id_order
+                  SELECT d.*, p.nama_produk, p.harga_produk
+                  FROM tb_order_detail d
+                  JOIN tb_produk p ON d.id_produk = p.id_produk
+                  WHERE d.id_order = $id_order
               ");
               while ($item = mysqli_fetch_assoc($detail)) {
                 $qty = isset($item['qty']) ? $item['qty'] : (isset($item['jumlah']) ? $item['jumlah'] : 1);
@@ -82,6 +88,27 @@
             </tbody>
           </table>
         </div>
+
+        <hr>
+
+        <!-- ULASAN -->
+        <h6><strong>Ulasan Pelanggan:</strong></h6>
+        <?php
+        $ulasan = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM tb_ulasan WHERE id_order = $id_order"));
+        if ($ulasan):
+        ?>
+          <p><strong>Rating:</strong> 
+            <?php
+            $rating = intval($ulasan['rating']);
+            for ($i = 1; $i <= 5; $i++) {
+              echo $i <= $rating ? '★' : '☆';
+            }
+            ?>
+          </p>
+          <p><strong>Ulasan:</strong><br><?= nl2br(htmlspecialchars($ulasan['ulasan'])) ?></p>
+        <?php else: ?>
+          <p class="text-muted fst-italic">Belum ada ulasan dari pelanggan.</p>
+        <?php endif; ?>
 
       </div>
       <div class="modal-footer">

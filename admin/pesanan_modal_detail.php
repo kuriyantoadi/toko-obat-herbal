@@ -40,7 +40,33 @@
 
         <hr>
 
-        <h6>Daftar Produk:</h6>
+        <?php if (strtolower($order['status_pembayaran']) == 'menunggu konfirmasi'): ?>
+          
+          <h6>Konfirmasi Pembayaran:</h6>
+          <form action="pesanan_konfirmasi_proses.php" method="POST" onsubmit="return confirm('Yakin ingin mengubah status pembayaran ini?')">
+            <input type="hidden" name="id_order" value="<?= $order['id_order'] ?>">
+            
+            <div class="mb-3">
+              <label for="aksi_konfirmasi" class="form-label">Tindakan</label>
+              <select name="aksi_konfirmasi" id="aksi_konfirmasi" class="form-select" required>
+                <option value="">-- Pilih --</option>
+                <option value="lunas">Setujui (Lunas)</option>
+                <option value="ditolak">Tolak Pembayaran</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="catatan_admin" class="form-label">Catatan (Opsional)</label>
+              <textarea name="catatan_admin" id="catatan_admin" class="form-control" rows="2" placeholder="Contoh: Bukti tidak valid..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-success btn-sm">Kirim Konfirmasi</button>
+          </form>
+        <?php endif; ?>
+
+        <hr>
+
+        <h6 class="fw-bold">Daftar Produk:</h6>
         <div class="table-responsive">
           <table class="table table-bordered table-sm">
             <thead class="table-light">

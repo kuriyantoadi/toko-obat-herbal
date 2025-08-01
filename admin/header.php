@@ -47,4 +47,15 @@ include '../koneksi.php';
     <link href="../assets/switcher/css/switcher.css" rel="stylesheet">
     <link href="../assets/switcher/demo.css" rel="stylesheet">
 
+    <style>
+        /* gambar produk */
+        .img-produk {
+        width: 100%;
+        height: 220px; /* Atur sesuai kebutuhan kamu */
+        object-fit: cover;
+        border-radius: 0.5rem;
+        }
+
+    </style>
+
 </head>

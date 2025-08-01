@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Update database
             mysqli_query($koneksi, "
               UPDATE tb_order 
-              SET status_pembayaran = 'lunas', bukti_transfer = '$nama_file'
+              SET status_pembayaran = 'Menunggu Konfirmasi', bukti_transfer = '$nama_file'
               WHERE id_order = $id_order
             ");
             header('Location: pesanan.php?pesan=konfirmasi_berhasil');

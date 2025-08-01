@@ -159,6 +159,30 @@ if (isset($_GET['pesan'])) {
             </div>
             ";
             break;
+        case "konfirmasi_sukses":
+            echo "
+            <div class='alert alert-success alert-dismissible fade show' role='alert'>
+                <strong>Berhasil!</strong> Status pesanan telah diperbarui menjadi <strong>Lunas</strong>.
+                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>";
+            break;
+
+        case "konfirmasi_ditolak":
+            echo "
+            <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                <strong>Ditolak!</strong> Pesanan telah ditandai sebagai <strong>Ditolak</strong>.
+                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>";
+            break;
+
+        case "konfirmasi_invalid":
+            echo "
+            <div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                <strong>Gagal!</strong> Aksi konfirmasi tidak valid.
+                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>";
+            break;
+
 
     }
 }

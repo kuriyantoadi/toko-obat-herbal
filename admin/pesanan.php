@@ -60,21 +60,38 @@
                       <td>
                         <?php
                           $status = strtolower($row['status_pembayaran']);
-                          $badgeClass = ($status == 'lunas') ? 'success' : 'danger';
-                          ?>
+                          $badgeClass = 'secondary'; // default badge
+
+                          // Tentukan warna badge berdasarkan status
+                          if ($status == 'lunas') {
+                              $badgeClass = 'success';
+                              $statusText = 'Lunas';
+                          } elseif ($status == 'belum lunas') {
+                              $badgeClass = 'danger';
+                              $statusText = 'Belum Lunas';
+                          } elseif ($status == 'menunggu konfirmasi') {
+                              $badgeClass = 'warning';
+                              $statusText = 'Menunggu Konfirmasi';
+                          } elseif ($status == 'ditolak') {
+                              $badgeClass = 'danger';
+                              $statusText = 'Ditolak';
+                          } else {
+                              $statusText = ucfirst($row['status_pembayaran']);
+                          }
+                        ?>
                           <div class="d-flex justify-content-center">
-                              <span class="badge bg-<?= $badgeClass ?>"><?= ucfirst($row['status_pembayaran']) ?></span>
+                              <span class="badge bg-<?= $badgeClass ?>"><?= $statusText ?></span>
                           </div>
 
                       </td>
                       <td>
                         <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modal_detail_pesanan<?= $row['id_order'] ?>">
-                          <i class="fe fe-eye"></i> Detail
+                          <i class="fe fe-eye"></i> 
                         </button>
                         <?php include('pesanan_modal_detail.php'); ?>
 
                         <a href="invoice_cetak.php?id=<?= $row['id_order'] ?>" target="_blank" class="btn btn-warning btn-sm">
-                          <i class="fe fe-printer"></i> Invoice
+                          <i class="fe fe-printer"></i> 
                         </a>
                       </td>
                     </tr>

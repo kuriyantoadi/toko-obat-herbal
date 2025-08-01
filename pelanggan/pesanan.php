@@ -64,28 +64,75 @@
                       <td>
                         <?php
                           $status = strtolower($row['status_pembayaran']);
-                          $badgeClass = ($status == 'lunas') ? 'success' : 'danger';
-                          ?>
-                          <div class="d-flex justify-content-center">
-                              <span class="badge bg-<?= $badgeClass ?>"><?= ucfirst($row['status_pembayaran']) ?></span>
-                          </div>
+                          $badgeClass = 'secondary'; // default badge
 
-                      </td>
+                          // Tentukan warna badge berdasarkan status
+                          if ($status == 'lunas') {
+                              $badgeClass = 'success';
+                              $statusText = 'Lunas';
+                          } elseif ($status == 'belum lunas') {
+                              $badgeClass = 'danger';
+                              $statusText = 'Belum Lunas';
+                          } elseif ($status == 'menunggu konfirmasi') {
+                              $badgeClass = 'warning';
+                              $statusText = 'Menunggu Konfirmasi';
+                          } elseif ($status == 'ditolak') {
+                              $badgeClass = 'danger';
+                              $statusText = 'Ditolak';
+                          } else {
+                              $statusText = ucfirst($row['status_pembayaran']);
+                          }
+                        ?>
+                        <div class="d-flex justify-content-center">
+                            <span class="badge bg-<?= $badgeClass ?>"><?= $statusText ?></span>
+                        </div>
+                    </td>
+
                       <td>
+                        <!-- Tombol Detail -->
                         <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modal_detail_pesanan<?= $row['id_order'] ?>">
-                          <i class="fe fe-eye"></i> Detail
+                          <i class="fe fe-eye"></i> 
                         </button>
                         <?php include('pesanan_modal_detail.php'); ?>
 
+                        <!-- Tombol Cetak Invoice -->
                         <a href="invoice_cetak.php?id=<?= $row['id_order'] ?>" target="_blank" class="btn btn-warning btn-sm">
-                          <i class="fe fe-printer"></i> Invoice
+                          <i class="fe fe-printer"></i> 
                         </a>
 
-                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal_konfirmasi<?= $row['id_order'] ?>">
-                          <i class="fe fe-check"></i> Konfirmasi Pembayaran
-                        </button>
-                        <?php include('pesanan_modal_konfirmasi.php'); ?>
+                        <!-- Tombol Konfirmasi jika belum lunas -->
+                        <?php if ($status == 'belum lunas') : ?>
+                          <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal_konfirmasi<?= $row['id_order'] ?>">
+                            <i class="fe fe-check"></i> 
+                          </button>
+                          <?php include('pesanan_modal_konfirmasi.php'); ?>
+                        <?php endif; ?>
+
+                        <!-- Cek apakah sudah ada ulasan -->
+                          <?php
+                            $id_order = $row['id_order'];
+                            $status_pesanan = strtolower($row['status_pembayaran']);
+
+                            // Cek apakah pesanan sudah lunas
+                            if ($status_pesanan == 'lunas') {
+                              $cek_ulasan = mysqli_query($koneksi, "SELECT * FROM tb_ulasan WHERE id_order = '$id_order'");
+                              
+                              // Cek keberhasilan query & hasilnya
+                              if ($cek_ulasan && mysqli_num_rows($cek_ulasan) == 0):
+                            ?>
+                                <!-- Tombol Ulasan jika belum ada dan status lunas -->
+                                <button class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modal_ulasan<?= $row['id_order'] ?>">
+                                  <i class="fe fe-message-square"></i>
+                                </button>
+                                <?php include 'ulasan_form.php'; ?>
+                            <?php 
+                              endif;
+                            } 
+                            ?>
+
+
                       </td>
+
                     </tr>
                   <?php } ?>
                   
