@@ -17,17 +17,11 @@ if ($data) {
         $_SESSION['id_pelanggan'] = $data['id_pelanggan'];
         $_SESSION['nama_pelanggan'] = $data['nama_pelanggan'];
         $_SESSION['status'] = 'aktif';
-        // echo "test 1";
         header("Location: ../pelanggan/index.php");
-        exit;
     } else {
-        // header("Location: index.php?pesan=gagal");
-        echo "test 2";
-        exit;
+        header("Location: index.php?pesan=gagal");
     }
 } else {
-    // header("Location: index.php?pesan=gagal");
-    echo "test 3";
-    exit;
+    header("Location: index.php?pesan=gagal");
 }
 ?>
