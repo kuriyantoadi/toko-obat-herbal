@@ -118,9 +118,9 @@ $produk = mysqli_query($koneksi, "
                         <small class="text-muted"><?= htmlspecialchars($p['nama_kategori']) ?></small>
                       </div>
                     </div>
-                    <div class="card-footer text-center">
+                    <!-- <div class="card-footer text-center">
                       <a href="cart.php?add=<?= $p['id_produk'] ?>" class="btn btn-primary mb-1"><i class="fe fe-shopping-cart mx-2"></i>Add to cart</a>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>

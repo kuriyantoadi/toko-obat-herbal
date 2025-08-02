@@ -1,131 +1,85 @@
-<body class="app sidebar-mini ltr light-mode">
+  <div class="landing-top-header overflow-hidden">
+                <div class="top sticky">
+                    <!--APP-SIDEBAR-->
+                    <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
+                    <div class="app-sidebar horizontal-main">
+                        <div class="container">
+                            <div class="row">
+                                <div class="main-sidemenu navbar px-0">
+                                    <a class="navbar-brand ps-0 d-none d-lg-block" href="index.php">
+                                        <img alt="" class="logo-2" src="../assets/images/brand/logo-dark.png">
+                                        <img src="../assets/images/brand/logo-white.png" class="logo-3" alt="logo">
+                                    </a>
+                                    <ul class="side-menu">
+                                        <li class="slide">
+                                            <a class="side-menu__item" data-bs-toggle="slide" href="index.php"><span
+                                                    class="side-menu__label">Dashboard</span></a>
+                                        </li>
+                                        <li class="slide">
+                                            <a class="side-menu__item" data-bs-toggle="slide" href="produk.php"><span
+                                                    class="side-menu__label">Produk</span></a>
+                                        </li>
+                                        <li class="slide">
+                                            <a class="side-menu__item" data-bs-toggle="slide" href="cart.php"><span
+                                                    class="side-menu__label">Keranjang</span></a>
+                                        </li>
+                                        <li class="slide">
+                                            <a class="side-menu__item" data-bs-toggle="slide" href="pesanan.php"><span
+                                                    class="side-menu__label">Pesanan</span></a>
+                                        </li>
 
+                                        <li class="slide">
+                                            <a class="side-menu__item" data-bs-toggle="slide" href="../login/logout.php"><span
+                                                    class="side-menu__label">Keluar</span></a>
+                                        </li>
+                                        
+                                        <!-- <li class="slide">
+                                            <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
+                                                <span class="side-menu__label">Submenu items</span><i class="angle fe fe-chevron-right"></i></a>
+                                            <ul class="slide-menu">
+                                                <li class="side-menu-label1"><a href="javascript:void(0)">Submenu
+                                                        items</a></li>
+                                                <li><a href="javascript:void(0)" class="slide-item">Submenu-1</a></li>
+                                                <li class="sub-slide"> <a class="sub-side-menu__item" data-bs-toggle="sub-slide" href="javascript:void(0)"><span class="sub-side-menu__label">Submenu-2</span><i class="sub-angle fe fe-chevron-right"></i></a>
+                                                    <ul class="sub-slide-menu">
+                                                        <li><a class="sub-slide-item" href="javascript:void(0)">Submenu-2.1</a></li>
+                                                        <li><a class="sub-slide-item" href="javascript:void(0)">Submenu-2.2</a></li>
+                                                        <li class="sub-slide2"> <a class="sub-side-menu__item2" href="javascript:void(0)" data-bs-toggle="sub-slide2"><span class="sub-side-menu__label2">Submenu-2.3</span><i class="sub-angle2 fe fe-chevron-right"></i></a>
+                                                            <ul class="sub-slide-menu2">
+                                                                <li><a href="javascript:void(0)" class="sub-slide-item2">Submenu-2.3.1</a></li>
+                                                                <li><a href="javascript:void(0)" class="sub-slide-item2">Submenu-2.3.2</a></li>
+                                                                <li><a href="javascript:void(0)" class="sub-slide-item2">Submenu-2.3.3</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><a class="sub-slide-item" href="javascript:void(0)">Submenu-2.4</a></li>
+                                                        <li><a class="sub-slide-item" href="javascript:void(0)">Submenu-2.5</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li> -->
 
-    <!-- GLOBAL-LOADER -->
-    <div id="global-loader">
-        <img src="../assets/images/loader.svg" class="loader-img" alt="Loader">
-    </div>
-    <!-- /GLOBAL-LOADER -->
-
-    <!-- PAGE -->
-    <div class="page">
-        <div class="page-main">
-
-            <!-- app-Header -->
-            <div class="app-header header sticky">
-                <div class="container-fluid main-container">
-                    <div class="d-flex">
-                        <a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-bs-toggle="sidebar" href="javascript:void(0)"></a>
-                        <!-- sidebar-toggle-->
-                        <a class="logo-horizontal " href="#">
-                            <img src="../assets/images/brand/logo-white.png" class="header-brand-img desktop-logo" alt="logo">
-                            <img src="../assets/images/brand/logo-dark.png" class="header-brand-img light-logo1" alt="logo">
-                        </a>
-                        <!-- LOGO -->
-                        
-                        <div class="d-flex order-lg-2 ms-auto header-right-icons">
-                                                   
-                            <div class="navbar navbar-collapse responsive-navbar p-0">
-                                <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
-                                    <div class="d-flex order-lg-2">
-                                        <div class="dropdown d-lg-none d-flex">
-                                            <a href="javascript:void(0)" class="nav-link icon" data-bs-toggle="dropdown">
-                                                <i class="fe fe-search"></i>
-                                            </a>
-                                            <div class="dropdown-menu header-search dropdown-menu-start">
-                                                <div class="input-group w-100 p-2">
-                                                    <input type="text" class="form-control" placeholder="Search....">
-                                                    <div class="input-group-text btn btn-primary">
-                                                        <i class="fa fa-search" aria-hidden="true"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                                                                                        
-                                       
-                                        <!-- SIDE-MENU -->
-                                        <div class="dropdown d-flex profile-1">
-                                            <a href="javascript:void(0)" data-bs-toggle="dropdown" class="nav-link leading-none d-flex">
-                                                <img src="../assets/images/users/user-small.png" alt="profile-user"
-                                                    class="avatar  profile-user brround cover-image">
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                                <div class="drop-heading">
-                                                    <div class="text-left">
-                                                        <h5 class="text-dark mb-0 fs-14 fw-semibold"><?= $_SESSION['nama_pelanggan'] ?></h5>
-                                                        <small class="text-muted"><?= $_SESSION['status'] ?></small>
-                                                    </div>
-                                                </div>
-                                                
-                                                <a class="dropdown-item" href="../login/logout.php">
-                                                    <i class="dropdown-icon fe fe-alert-circle"></i> Sign out
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </ul>
+                                    <!-- <div class="header-nav-right d-none d-lg-flex">
+                                        <a href="register.html"
+                                            class="btn ripple btn-min w-sm btn-outline-primary me-2 my-auto d-lg-none d-xl-block d-block"
+                                            target="_blank">Registrasi
+                                        </a>
+                                        <a href="login.html" class="btn ripple btn-min w-sm btn-primary me-2 my-auto d-lg-none d-xl-block d-block"
+                                            target="_blank">Login
+                                        </a>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!--/APP-SIDEBAR-->
                 </div>
+                
             </div>
-            <!-- /app-Header -->
 
-            <!--APP-SIDEBAR-->
-            <div class="sticky">
-                <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
-                <div class="app-sidebar">
-                    <div class="side-header">
-                        <a class="header-brand1" href="#">
-                            <img src="../assets/images/brand/logo-white.png" class="header-brand-img desktop-logo" alt="logo">
-                            <img src="../assets/images/brand/icon-white.png" class="header-brand-img toggle-logo"
-                                alt="logo">
-                            <img src="../assets/images/brand/icon-dark.png" class="header-brand-img light-logo" alt="logo">
-                            <img src="../assets/images/brand/logo-dark.png" class="header-brand-img light-logo1"
-                                alt="logo">
-                        </a>
-                        <!-- LOGO -->
-                    </div>
-                    <div class="main-sidemenu">
-                        <div class="slide-left disabled" id="slide-left"><svg xmlns="http://www.w3.org/2000/svg"
-                                fill="#7b8191" width="24" height="24" viewBox="0 0 24 24">
-                                <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z" />
-                            </svg></div>
-                        <ul class="side-menu">
-                            <li class="sub-category">
-                                <h3>Menu</h3>
-                            </li>
-                            <li class="slide">
-                                <a class="side-menu__item has-link" data-bs-toggle="slide" href="index.php">
-                                <i class="side-menu__icon fe fe-home"></i>
-                                <span class="side-menu__label">Dashboard Pelanggan</span></a>
-                            </li>
+            <!--app-content open-->
+            <div class="main-content mt-0">
+                <div class="side-app">
 
-                            <li>
-                                <a class="side-menu__item has-link" href="produk.php">
-                                <i class="side-menu__icon fe fe-box"></i>
-                                <span class="side-menu__label">Produk</span></a>
-                            </li>                           
-
-                            <li>
-                                <a class="side-menu__item has-link" href="cart.php">
-                                <i class="side-menu__icon fe fe-shopping-bag"></i>
-                                <span class="side-menu__label">Keranjang</span></a>
-                            </li>
-
-                             <li>
-                                <a class="side-menu__item has-link" href="pesanan.php">
-                                <i class="side-menu__icon fe fe-shopping-cart"></i>
-                                <span class="side-menu__label">Pesanan</span></a>
-                            </li>
-
-                          
-                        </ul>
-                        <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"
-                                width="24" height="24" viewBox="0 0 24 24">
-                                <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z" />
-                            </svg></div>
-                    </div>
-                </div>
-            </div>
-            <!--/APP-SIDEBAR-->
+                    <!-- CONTAINER -->
+                    <div class="main-container">

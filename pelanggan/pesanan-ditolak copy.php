@@ -8,24 +8,24 @@
 
       <!-- PAGE HEADER -->
       <div class="page-header">
-        <h1 class="page-title">Pesanan Belum Lunas</h1>
+        <h1 class="page-title">Pesanan Ditolak</h1>
         <div>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Belum Lunas</li>
+            <li class="breadcrumb-item active" aria-current="page">Ditolak</li>
           </ol>
         </div>
       </div>
 
-      <!-- TABEL PESANAN BELUM LUNAS -->
+      <!-- TABEL PESANAN DITOLAK -->
       <div class="row">
         <div class="col-md-12">
           <div class="card">
             
             <div class="card-body table-responsive">
-              <?php include('../alert.php') ?>
-              <?php include('pesanan-btn.php') ?>
-              <table class="table table-bordered table-striped" id="belum-lunas-datatable">
+            <?php include('../alert.php') ?>
+            <?php include('pesanan-btn.php') ?>
+              <table class="table table-bordered table-striped" id="lunas-datatable">
                 <thead>
                   <tr>
                     <th>No</th>
@@ -41,12 +41,13 @@
                 <tbody>
                   <?php
                   $no = 1;
-                  $data = mysqli_query($koneksi, "SELECT * 
-                                                  FROM tb_pelanggan, tb_order 
-                                                  WHERE tb_pelanggan.id_pelanggan = tb_order.id_pelanggan 
-                                                  AND tb_order.status_pembayaran = 'belum lunas' 
-                                                  ORDER BY tb_order.tanggal_order DESC
-                                                  ");
+                  $data = mysqli_query($koneksi, "
+                      SELECT * 
+                      FROM tb_order, tb_pelanggan 
+                      WHERE tb_order.id_pelanggan = tb_pelanggan.id_pelanggan 
+                      AND status_pembayaran = 'ditolak' 
+                      ORDER BY tanggal_order DESC
+                  ");
                   while ($row = mysqli_fetch_array($data)) {
                   ?>
                     <tr>
@@ -72,16 +73,15 @@
                         </button>
                         <?php include('pesanan_modal_detail.php'); ?>
 
-                        <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modal_konfirmasi<?= $row['id_order'] ?>">
-                          <i class="fe fe-check-circle"></i> Konfirmasi
-                        </button>
-                        <?php include('pesanan_modal_konfirmasi.php'); ?>
+                        <a href="invoice_cetak.php?id=<?= $row['id_order'] ?>" target="_blank" class="btn btn-warning btn-sm">
+                          <i class="fe fe-printer"></i> Invoice
+                        </a>
                       </td>
                     </tr>
                   <?php } ?>
                   <?php if (mysqli_num_rows($data) == 0): ?>
                     <tr>
-                      <td colspan="8" class="text-center">Tidak ada pesanan belum lunas.</td>
+                      <td colspan="8" class="text-center">Tidak ada pesanan lunas.</td>
                     </tr>
                   <?php endif; ?>
                 </tbody>
@@ -100,7 +100,7 @@
 <!-- DataTable Script -->
 <script>
   $(document).ready(function () {
-    $('#belum-lunas-datatable').DataTable({
+    $('#lunas-datatable').DataTable({
       language: {
         search: "Cari:",
         lengthMenu: "Tampilkan _MENU_ entri",

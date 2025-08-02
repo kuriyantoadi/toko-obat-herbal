@@ -9,30 +9,16 @@ $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $page = max($page, 1);
 $start = ($page - 1) * $limit;
 
-// Handle pencarian
-$where = "";
-$search = "";
-if (isset($_GET['search']) && $_GET['search'] != '') {
-  $search = mysqli_real_escape_string($koneksi, $_GET['search']);
-  $where = "WHERE p.nama_produk LIKE '%$search%' OR p.deskripsi_produk LIKE '%$search%'";
-}
-
-// Hitung total produk untuk pagination
-$result_count = mysqli_query($koneksi, "
-  SELECT COUNT(*) as total 
-  FROM tb_produk p 
-  JOIN tb_kategori_produk k ON p.id_kat_produk = k.id_kat_produk
-  $where
-");
+// Hitung total produk
+$result_count = mysqli_query($koneksi, "SELECT COUNT(*) as total FROM tb_produk");
 $total_data = mysqli_fetch_assoc($result_count)['total'];
 $total_page = ceil($total_data / $limit);
 
-// Ambil produk sesuai halaman dan pencarian
+// Ambil produk sesuai halaman
 $produk = mysqli_query($koneksi, "
   SELECT p.*, k.nama_kategori 
   FROM tb_produk p 
   JOIN tb_kategori_produk k ON p.id_kat_produk = k.id_kat_produk
-  $where
   ORDER BY p.tanggal_ditambahkan DESC
   LIMIT $start, $limit
 ");
@@ -91,17 +77,17 @@ $produk = mysqli_query($koneksi, "
                 <div class="card-body p-4">
                   <div class="row">
                     <div class="col-xl-8">
-                      <form method="GET" class="input-group d-flex w-100">
-                        <input type="text" name="search" class="form-control border-end-0 my-2" placeholder="Search ..." value="<?= htmlspecialchars($search) ?>">
+                      <div class="input-group d-flex w-100">
+                        <input type="text" class="form-control border-end-0 my-2" placeholder="Search ...">
                         <button class="btn input-group-text border-start-0 my-2">
                           <i class="fe fe-search"></i>
                         </button>
-                      </form>
+                      </div>
                     </div>
                     <div class="col-xl-4 text-end">
-                      <!-- <button class="btn btn-primary my-2" data-bs-toggle="modal" data-bs-target="#modal_tambah_produk">
+                      <button class="btn btn-primary my-2" data-bs-toggle="modal" data-bs-target="#modal_tambah_produk">
                         <i class="fa fa-plus-square me-2"></i>New Product
-                      </button> -->
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -144,15 +130,15 @@ $produk = mysqli_query($koneksi, "
             <div class="float-end">
               <ul class="pagination">
                 <li class="page-item <?= $page <= 1 ? 'disabled' : '' ?>">
-                  <a class="page-link" href="?page=<?= $page - 1 ?>&search=<?= urlencode($search) ?>">&laquo;</a>
+                  <a class="page-link" href="?page=<?= $page - 1 ?>">&laquo;</a>
                 </li>
                 <?php for ($i = 1; $i <= $total_page; $i++) { ?>
                   <li class="page-item <?= $page == $i ? 'active' : '' ?>">
-                    <a class="page-link" href="?page=<?= $i ?>&search=<?= urlencode($search) ?>"><?= $i ?></a>
+                    <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
                   </li>
                 <?php } ?>
                 <li class="page-item <?= $page >= $total_page ? 'disabled' : '' ?>">
-                  <a class="page-link" href="?page=<?= $page + 1 ?>&search=<?= urlencode($search) ?>">&raquo;</a>
+                  <a class="page-link" href="?page=<?= $page + 1 ?>">&raquo;</a>
                 </li>
               </ul>
             </div>
