@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.2
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Aug 13, 2025 at 01:50 PM
--- Server version: 10.6.23-MariaDB
--- PHP Version: 8.3.23
+-- Host: localhost
+-- Generation Time: Aug 13, 2025 at 08:55 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 5.6.40
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `cljgihfg_toko-herbal`
+-- Database: `toko-obat-herbal`
 --
 
 -- --------------------------------------------------------
@@ -30,18 +31,18 @@ SET time_zone = "+00:00";
 CREATE TABLE `tb_kategori_produk` (
   `id_kat_produk` int(11) NOT NULL,
   `nama_kategori` varchar(100) NOT NULL,
-  `deskripsi_kategori` text DEFAULT NULL,
+  `deskripsi_kategori` text,
   `status_kategori` enum('aktif','nonaktif') DEFAULT 'aktif',
-  `tanggal_dibuat` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `tanggal_dibuat` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_kategori_produk`
 --
 
 INSERT INTO `tb_kategori_produk` (`id_kat_produk`, `nama_kategori`, `deskripsi_kategori`, `status_kategori`, `tanggal_dibuat`) VALUES
-(1, 'Madu', 'madu', '', '2025-07-13 21:09:57'),
-(3, 'Obat Herbal', 'obat herbal', 'aktif', '2025-07-31 09:03:08');
+(1, 'Madu', 'madu', 'aktif', '2025-07-13 21:09:57'),
+(2, 'Jeruk', 'Jeruk', '', '2025-07-15 19:15:42');
 
 -- --------------------------------------------------------
 
@@ -57,7 +58,7 @@ CREATE TABLE `tb_order` (
   `status_pembayaran` varchar(20) DEFAULT 'belum',
   `bukti_transfer` varchar(255) DEFAULT NULL,
   `metode_pembayaran` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_order`
@@ -81,7 +82,7 @@ CREATE TABLE `tb_order_detail` (
   `jumlah` int(11) DEFAULT NULL,
   `harga` int(11) DEFAULT NULL,
   `subtotal` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_order_detail`
@@ -106,17 +107,18 @@ CREATE TABLE `tb_pelanggan` (
   `email_pelanggan` varchar(100) NOT NULL,
   `password_pelanggan` text NOT NULL,
   `no_hp_pelanggan` varchar(20) DEFAULT NULL,
-  `alamat_pelanggan` text DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `alamat_pelanggan` text,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_pelanggan`
 --
 
 INSERT INTO `tb_pelanggan` (`id_pelanggan`, `nama_pelanggan`, `email_pelanggan`, `password_pelanggan`, `no_hp_pelanggan`, `alamat_pelanggan`, `created_at`, `status`) VALUES
-(4, 'agus', 'agus@gmail.com', '$2y$10$X2PDg1OIAakzkij/jrNF7upjidYqtr11aNYj/AL62HfgPDJQXe.QK', '089765432', 'serang', '2025-07-27 03:51:15', 'aktif');
+(3, 'siti', 'siti@gmail.com', '$2y$10$yWpQV0oFt/z1av8dKuydJOk/xwuW33xv2hXFwcuESFBLgd2xB0rqO', '123', 'serang', '2025-07-27 02:54:22', 'aktif'),
+(4, 'agus', 'agus@gmail.com', '$2y$10$X2PDg1OIAakzkij/jrNF7upjidYqtr11aNYj/AL62HfgPDJQXe.QK', '123', 'serang', '2025-07-27 03:51:15', 'aktif');
 
 -- --------------------------------------------------------
 
@@ -128,13 +130,13 @@ CREATE TABLE `tb_produk` (
   `id_produk` int(11) NOT NULL,
   `id_kat_produk` int(11) NOT NULL,
   `nama_produk` varchar(255) NOT NULL,
-  `stok_produk` int(11) DEFAULT 0,
+  `stok_produk` int(11) DEFAULT '0',
   `gambar_produk` varchar(255) DEFAULT NULL,
-  `tanggal_ditambahkan` datetime DEFAULT current_timestamp(),
-  `deskripsi_produk` text DEFAULT NULL,
-  `berat_produk` int(11) DEFAULT 0,
+  `tanggal_ditambahkan` datetime DEFAULT CURRENT_TIMESTAMP,
+  `deskripsi_produk` text,
+  `berat_produk` int(11) DEFAULT '0',
   `harga_produk` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_produk`
@@ -142,8 +144,8 @@ CREATE TABLE `tb_produk` (
 
 INSERT INTO `tb_produk` (`id_produk`, `id_kat_produk`, `nama_produk`, `stok_produk`, `gambar_produk`, `tanggal_ditambahkan`, `deskripsi_produk`, `berat_produk`, `harga_produk`) VALUES
 (6, 1, 'Madu Murni', 10, 'produk_687407fee1f7e.jpeg', '2025-07-13 21:24:46', '', 200, 200000),
-(9, 3, 'Bilberry', 50, 'produk_688acfe750658.png', '2025-07-31 09:07:35', '', 500, 150000),
-(10, 1, 'madu pahit', 20, 'produk_688ad397c5191.png', '2025-07-31 09:24:07', 'Madu Pahit memiliki rasa yang khas karena diproduksi oleh lebah jenis Apis dorsata yang mengonsumsi nektar dari kuncup pohon yang pahit seperti tanaman kirinyuh, pohon jati, pohon mahoni, tanaman benalu dan tanaman Clidemia hirta atau tanaman keduduk bulu. Madu Pahit mempunyai kandungan alkaloid yang cukup tinggi. Zat ini berfungsi sebagai anti bakteri alami yang dapat membunuh berbagai bakteri yang dapat merugikan tubuh.\r\n\r\nKOMPOSISI\r\nMadu 100%\r\n', 50, 120000);
+(7, 1, 'Jeruk Herbal', 1, 'produk_6876959b5ce46.jpeg', '2025-07-16 00:53:31', 'Jeruk Herbal', 100, 20000),
+(8, 2, 'Sabun Herbal', 10, 'produk_68856c6997c1f.jpeg', '2025-07-27 02:01:45', '', 500, 10000);
 
 -- --------------------------------------------------------
 
@@ -156,9 +158,9 @@ CREATE TABLE `tb_review_produk` (
   `id_produk` int(11) NOT NULL,
   `nama_reviewer` varchar(100) DEFAULT NULL,
   `rating` int(11) DEFAULT NULL,
-  `komentar` text DEFAULT NULL,
-  `tanggal_review` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `komentar` text,
+  `tanggal_review` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -170,16 +172,17 @@ CREATE TABLE `tb_user` (
   `id_user` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `status` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `nama_staff_desa` varchar(50) NOT NULL,
+  `status_staff` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_user`
 --
 
-INSERT INTO `tb_user` (`id_user`, `username`, `password`, `status`) VALUES
-(10, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin'),
-(11, 'pimpinan', '59335c9f58c78597ff73f6706c6c8fa278e08b3a', 'pimpinan');
+INSERT INTO `tb_user` (`id_user`, `username`, `password`, `nama_staff_desa`, `status_staff`) VALUES
+(10, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', '', ''),
+(11, 'pimpinan', '59335c9f58c78597ff73f6706c6c8fa278e08b3a', '', '');
 
 --
 -- Indexes for dumped tables
@@ -239,7 +242,7 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_kategori_produk`
 --
 ALTER TABLE `tb_kategori_produk`
-  MODIFY `id_kat_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_kat_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_order`
@@ -263,7 +266,7 @@ ALTER TABLE `tb_pelanggan`
 -- AUTO_INCREMENT for table `tb_produk`
 --
 ALTER TABLE `tb_produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tb_review_produk`
