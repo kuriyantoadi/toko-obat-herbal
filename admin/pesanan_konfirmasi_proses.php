@@ -6,6 +6,8 @@ $id_order = $_POST['id_order'];
 $aksi     = $_POST['aksi_konfirmasi'];
 $catatan  = mysqli_real_escape_string($koneksi, $_POST['catatan_admin']);
 
+
+var_dump($id_order, $aksi, $catatan); // Debugging line
 // Cek validitas aksi
 if ($aksi == 'lunas') {
     $status = 'lunas';
