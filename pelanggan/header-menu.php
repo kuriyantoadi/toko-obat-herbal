@@ -11,10 +11,10 @@
                                         <img src="../assets/images/brand/logo-white.png" class="logo-3" alt="logo">
                                     </a>
                                     <ul class="side-menu">
-                                        <li class="slide">
+                                        <!-- <li class="slide">
                                             <a class="side-menu__item" data-bs-toggle="slide" href="index.php"><span
                                                     class="side-menu__label">Dashboard</span></a>
-                                        </li>
+                                        </li> -->
                                         <li class="slide">
                                             <a class="side-menu__item" data-bs-toggle="slide" href="produk.php"><span
                                                     class="side-menu__label">Produk</span></a>
