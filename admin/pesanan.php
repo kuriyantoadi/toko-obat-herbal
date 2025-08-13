@@ -42,7 +42,7 @@
                 </thead>
                 <tbody>
                   <?php
-                  $no = 1;
+                  $no=1;
                   $data = mysqli_query($koneksi, "SELECT * 
                                                   FROM tb_pelanggan 
                                                   JOIN tb_order ON tb_pelanggan.id_pelanggan = tb_order.id_pelanggan 

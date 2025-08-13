@@ -7,7 +7,6 @@ $aksi     = $_POST['aksi_konfirmasi'];
 $catatan  = mysqli_real_escape_string($koneksi, $_POST['catatan_admin']);
 
 
-var_dump($id_order, $aksi, $catatan); // Debugging line
 // Cek validitas aksi
 if ($aksi == 'lunas') {
     $status = 'lunas';
@@ -22,10 +21,8 @@ if ($aksi == 'lunas') {
 // Update status pembayaran
 $cek = mysqli_query($koneksi, "UPDATE tb_order SET status_pembayaran='$status', catatan_admin='$catatan' WHERE id_order='$id_order'");
 
-var_dump($cek); // Debugging line
-
 // Set pesan sukses
 $_SESSION['success'] = 'Status pembayaran berhasil diperbarui.';
-// header('Location: pesanan.php');
-// exit;
+header('Location: pesanan.php');
+exit;
 ?>
