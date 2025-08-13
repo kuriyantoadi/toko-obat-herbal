@@ -20,7 +20,9 @@ var_dump($id_order, $aksi, $catatan); // Debugging line
 // }
 
 // Update status pembayaran
-mysqli_query($koneksi, "UPDATE tb_order SET status_pembayaran='$status', catatan_admin='$catatan' WHERE id_order='$id_order'");
+$cek = mysqli_query($koneksi, "UPDATE tb_order SET status_pembayaran='$status', catatan_admin='$catatan' WHERE id_order='$id_order'");
+
+var_dump($cek); // Debugging line
 
 // Set pesan sukses
 $_SESSION['success'] = 'Status pembayaran berhasil diperbarui.';
