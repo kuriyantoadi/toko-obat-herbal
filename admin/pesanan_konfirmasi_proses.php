@@ -22,6 +22,6 @@ mysqli_query($koneksi, "UPDATE tb_order SET status_pembayaran='$status', catatan
 
 // Set pesan sukses
 $_SESSION['success'] = 'Status pembayaran berhasil diperbarui.';
-header('Location: pesanan.php');
-exit;
+// header('Location: pesanan.php');
+// exit;
 ?>
