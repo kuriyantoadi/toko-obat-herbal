@@ -89,6 +89,13 @@
                         <a href="invoice_cetak.php?id=<?= $row['id_order'] ?>" target="_blank" class="btn btn-warning btn-sm">
                           <i class="fe fe-printer"></i> 
                         </a>
+
+                        <!-- Tombol Hapus -->
+                        <a href="pesanan-hapus.php?id=<?= $row['id_order'] ?>" 
+                          onclick="return confirm('Yakin ingin menghapus pesanan ini?')" 
+                          class="btn btn-danger btn-sm">
+                          <i class="fe fe-trash"></i>
+                        </a>
                       </td>
                     </tr>
                   <?php } ?>

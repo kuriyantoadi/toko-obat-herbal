@@ -182,6 +182,29 @@ if (isset($_GET['pesan'])) {
                 <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'></button>
             </div>";
             break;
+       case "hapus_sukses":
+            echo "
+            <div class='alert alert-success alert-dismissible fade show' role='alert'>
+                <strong>Berhasil!</strong> Pesanan berhasil dihapus.
+                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>";
+            break;
+
+        case "hapus_gagal":
+            echo "
+            <div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                <strong>Gagal!</strong> Pesanan gagal dihapus.
+                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>";
+            break;
+
+        case "invalid_id":
+            echo "
+            <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                <strong>Perhatian!</strong> ID pesanan tidak valid.
+                <button class='btn-close' type='button' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>";
+            break;
 
 
     }
