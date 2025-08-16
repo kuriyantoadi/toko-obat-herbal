@@ -24,6 +24,10 @@
                                             <a class="side-menu__item" data-bs-toggle="slide" href="pesanan.php"><span
                                                     class="side-menu__label">Pesanan</span></a>
                                         </li>
+                                         <li class="slide">
+                                            <a class="side-menu__item" data-bs-toggle="slide" href="profil.php"><span
+                                                    class="side-menu__label">Profil Toko</span></a>
+                                        </li>
 
                                         <li class="slide">
                                             <a class="side-menu__item" data-bs-toggle="slide" href="../login/logout.php"><span

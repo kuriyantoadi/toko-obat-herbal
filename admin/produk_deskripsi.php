@@ -31,7 +31,7 @@ if (!$data) {
             <div class="row">
                 <!-- Gambar -->
                 <div class="col-lg-5">
-                    <img src="../uploads/produk/<?= $data['gambar_produk'] ?>" class="img-fluid rounded shadow" alt="<?= $data['nama_produk'] ?>">
+                    <img src="../uploads/produk/<?= $data['gambar_produk'] ?>" class="img-fluid shadow" alt="<?= $data['nama_produk'] ?>">
                 </div>
 
                 <!-- Detail Produk -->

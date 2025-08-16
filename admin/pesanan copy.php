@@ -25,8 +25,8 @@
               <h3 class="card-title">Daftar Pesanan yang Sudah Lunas</h3>
             </div>
             <div class="card-body table-responsive">
-              <?php include('../alert.php') ?>
-              <?php include('pesanan-btn.php') ?>
+            <?php include('../alert.php') ?>
+            <?php include('pesanan-btn.php') ?>
               <table class="table table-bordered table-striped" id="lunas-datatable">
                 <thead>
                   <tr>
@@ -42,6 +42,7 @@
                 </thead>
                 <tbody>
                   <?php
+                  $no=1;
                   $data = mysqli_query($koneksi, "SELECT * 
                                                   FROM tb_pelanggan 
                                                   JOIN tb_order ON tb_pelanggan.id_pelanggan = tb_order.id_pelanggan 
@@ -50,7 +51,7 @@
                   while ($row = mysqli_fetch_array($data)) {
                   ?>
                     <tr>
-                      <td></td> <!-- Nomor urut otomatis dari DataTables -->
+                      <td><?= $no++ ?></td>
                       <td><?= date('d-m-Y H:i', strtotime($row['tanggal_order'])) ?></td>
                       <td><?= htmlspecialchars($row['nama_pelanggan']) ?></td>
                       <td><?= htmlspecialchars($row['no_hp_pelanggan']) ?></td>
@@ -59,7 +60,9 @@
                       <td>
                         <?php
                           $status = strtolower($row['status_pembayaran']);
-                          $badgeClass = 'secondary';
+                          $badgeClass = 'secondary'; // default badge
+
+                          // Tentukan warna badge berdasarkan status
                           if ($status == 'lunas') {
                               $badgeClass = 'success';
                               $statusText = 'Lunas';
@@ -79,6 +82,7 @@
                           <div class="d-flex justify-content-center">
                               <span class="badge bg-<?= $badgeClass ?>"><?= $statusText ?></span>
                           </div>
+
                       </td>
                       <td>
                         <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modal_detail_pesanan<?= $row['id_order'] ?>">
@@ -109,7 +113,7 @@
 <!-- DataTable Script -->
 <script>
   $(document).ready(function () {
-    var t = $('#lunas-datatable').DataTable({
+    $('#lunas-datatable').DataTable({
       language: {
         search: "Cari:",
         lengthMenu: "Tampilkan _MENU_ entri",
@@ -122,20 +126,7 @@
         },
         zeroRecords: "Tidak ada data ditemukan",
         infoEmpty: "Menampilkan 0 sampai 0 dari 0 entri"
-      },
-      columnDefs: [
-        { searchable: false, orderable: false, targets: 0 } // kolom No tidak ikut search & sort
-      ],
-      order: [[1, 'desc']] // urut default berdasarkan tanggal terbaru
+      }
     });
-
-    // Nomor urut otomatis
-    t.on('order.dt search.dt', function () {
-      t.column(0, { search: 'applied', order: 'applied' })
-        .nodes()
-        .each(function (cell, i) {
-          cell.innerHTML = i + 1;
-        });
-    }).draw();
   });
 </script>

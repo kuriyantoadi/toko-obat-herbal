@@ -124,6 +124,14 @@
                                 <i class="side-menu__icon fe fe-users"></i>
                                 <span class="side-menu__label">Pelanggan</span></a>
                             </li>
+
+                           <li>
+                                <a class="side-menu__item has-link" href="profil_edit.php">
+                                    <i class="side-menu__icon fe fe-info"></i>
+                                    <span class="side-menu__label">Profil Edit</span>
+                                </a>
+                            </li>
+
        
                         </ul>
                         <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"
