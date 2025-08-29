@@ -56,30 +56,7 @@
                       <td><?= htmlspecialchars($row['no_hp_pelanggan']) ?></td>
                       <td><?= htmlspecialchars($row['alamat_pelanggan']) ?></td>
                       <td>Rp<?= number_format($row['total'], 0, ',', '.') ?></td>
-                      <td>
-                        <?php
-                          $status = strtolower($row['status_pembayaran']);
-                          $badgeClass = 'secondary';
-                          if ($status == 'lunas') {
-                              $badgeClass = 'success';
-                              $statusText = 'Lunas';
-                          } elseif ($status == 'belum lunas') {
-                              $badgeClass = 'danger';
-                              $statusText = 'Belum Lunas';
-                          } elseif ($status == 'menunggu konfirmasi') {
-                              $badgeClass = 'warning';
-                              $statusText = 'Menunggu Konfirmasi';
-                          } elseif ($status == 'ditolak') {
-                              $badgeClass = 'danger';
-                              $statusText = 'Ditolak';
-                          } else {
-                              $statusText = ucfirst($row['status_pembayaran']);
-                          }
-                        ?>
-                          <div class="d-flex justify-content-center">
-                              <span class="badge bg-<?= $badgeClass ?>"><?= $statusText ?></span>
-                          </div>
-                      </td>
+                      <?php include('../case_status_pembayaran.php'); ?>
                       <td>
                         <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modal_detail_pesanan<?= $row['id_order'] ?>">
                           <i class="fe fe-eye"></i> 

@@ -7,13 +7,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $rating = isset($_POST['rating']) ? intval($_POST['rating']) : 0;
 
   if ($id_order > 0 && $ulasan != '' && $rating > 0) {
+    // Simpan ulasan
     $query = "INSERT INTO tb_ulasan (id_order, ulasan, rating, tanggal_ulasan) 
               VALUES ('$id_order', '$ulasan', '$rating', NOW())";
 
     if (mysqli_query($koneksi, $query)) {
-      header("Location: pesanan.php?pesan=sukses"); // ganti dengan halaman tujuan
+      // Update status order menjadi "Selesai"
+      $update = "UPDATE tb_order SET status_pembayaran = 'Selesai' WHERE id_order = '$id_order'";
+      mysqli_query($koneksi, $update);
+
+      header("Location: pesanan.php?pesan=ulasan_sukses");
+      exit();
     } else {
-      echo "Gagal menyimpan: " . mysqli_error($koneksi);
+      echo "Gagal menyimpan ulasan: " . mysqli_error($koneksi);
     }
   } else {
     echo "Data tidak lengkap.";

@@ -64,6 +64,34 @@
           </form>
         <?php endif; ?>
 
+
+        <!-- konfirmasi input no resi -->
+       <?php if (strtolower($order['status_pembayaran']) == 'lunas' && empty($order['no_resi'])): ?>
+          <!-- FORM INPUT RESI -->
+          <h6><b>Input Nomor Resi:</b></h6>
+          <form action="pesanan_resi_proses.php" method="POST" onsubmit="return confirm('Yakin ingin menyimpan nomor resi ini?')">
+            <input type="hidden" name="id_order" value="<?= $order['id_order'] ?>">
+
+            <div class="mb-3">
+              <label for="no_resi" class="form-label">Nomor Resi</label>
+              <input type="text" name="no_resi" id="no_resi" 
+                    class="form-control" 
+                    placeholder="Contoh: JNE123456789" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-sm">Simpan Resi</button>
+          </form>
+
+        <?php elseif (!empty($order['no_resi'])): ?>
+          <!-- TAMPIL NOMOR RESI -->
+          <h6>Nomor Resi:</h6>
+          <p>
+            <span class="badge bg-info"><?= htmlspecialchars($order['no_resi']) ?></span>
+          </p>
+        <?php endif; ?>
+
+
+
         <hr>
 
         <h6 class="fw-bold">Daftar Produk:</h6>

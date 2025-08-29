@@ -38,7 +38,6 @@ elseif ($status === 'belum lunas') { $badgeClass = 'danger'; }
 elseif ($status === 'menunggu konfirmasi') { $badgeClass = 'warning'; }
 elseif ($status === 'ditolak') { $badgeClass = 'danger'; }
 elseif ($status === 'dikirim') { $badgeClass = 'info'; }
-elseif ($status === 'selesai') { $badgeClass = 'success'; }
 ?>
 
 <!-- Modal Detail Pesanan -->
@@ -148,8 +147,8 @@ elseif ($status === 'selesai') { $badgeClass = 'success'; }
             ?>
           </p>
           <p><strong>Ulasan:</strong><br><?= nl2br(htmlspecialchars($ulasan['ulasan'])) ?></p>
-        <?php elseif ($status === 'menunggu ulasan'): ?>
-          <!-- Tampilkan form ulasan jika belum ada dan status sudah selesai -->
+        <?php elseif ($status === 'dikirim'): ?>
+          <!-- Tampilkan form ulasan jika belum ada dan status sudah dikirim -->
           <form action="ulasan_simpan.php" method="POST">
             <input type="hidden" name="id_order" value="<?= $id_order ?>">
             <div class="mb-3">
@@ -175,15 +174,6 @@ elseif ($status === 'selesai') { $badgeClass = 'success'; }
 
       </div>
       <div class="modal-footer">
-        <?php if ($status === 'dikirim'): ?>
-          <form action="pesanan_konfirmasi_terima.php" method="POST" onsubmit="return confirm('Apakah Anda yakin barang sudah diterima?')">
-            <input type="hidden" name="id_order" value="<?= $id_order ?>">
-            <button type="submit" class="btn btn-success btn-sm">
-              Konfirmasi Barang Diterima
-            </button>
-          </form>
-        <?php endif; ?>
-
         <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
       </div>
     </div>

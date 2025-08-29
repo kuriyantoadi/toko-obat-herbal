@@ -1,4 +1,12 @@
 <?php
+ob_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+if ($_SESSION['status'] != "aktif") {
+    header("location:../login/index.php?pesan=belum_login");
+}
 
 include '../koneksi.php';
 ?>
